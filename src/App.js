@@ -1,14 +1,27 @@
 // src/App.js
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 // import About from './pages/About';
 // import Contact from './pages/Contact';
 
 function App() {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <Router>
-      <Header /> {/* Cabeçalho visível em todas as páginas */}
+      {/* Passamos a função pro Header */}
+      <Header toggleSidebar={toggleSidebar} /> 
+
+      {/* Passamos o estado pra Sidebar */}
+      <Sidebar isOpen={isOpen} />
+
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/sobre" element={<About />} /> */}

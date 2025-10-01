@@ -7,6 +7,9 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #dfdfdf;
+  height: 60px;              /* altura fixa para referência da sidebar */
+  box-sizing: border-box;    /* garante que padding não aumente altura */
+  z-index: 1000;             /* garante que fique acima da sidebar */
 }
 
 .logo {
@@ -33,11 +36,11 @@
 }
 
 .user-link {
-  color: #000000;     /* cor fixa (verde, mas pode ser qualquer hex, rgb ou nome) */
-  font-weight: bold;  /* opcional: deixa em negrito */
-  text-decoration: none; /* remove sublinhado */
+  color: #000000;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .user-link:hover {
-  color: #4c87af; /* mantém a mesma cor no hover */
+  color: #ffffff;
 }
