@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 // import About from './pages/About';
 // import Contact from './pages/Contact';
+import "./App.css";
 
 function App() {
   const [isOpen, setIsOpen] = useState(true);
@@ -17,16 +18,21 @@ function App() {
   return (
     <Router>
       {/* Passamos a função pro Header */}
-      <Header toggleSidebar={toggleSidebar} /> 
+      <Header toggleSidebar={toggleSidebar} />
 
-      {/* Passamos o estado pra Sidebar */}
-      <Sidebar isOpen={isOpen} />
+      <div className="app-container">
+        {/* Sidebar à esquerda */}
+        <Sidebar isOpen={isOpen} />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/sobre" element={<About />} /> */}
-        {/* <Route path="/contato" element={<Contact />} /> */}
-      </Routes>
+        {/* Conteúdo principal que se ajusta */}
+        <main className={`content ${isOpen ? "content-shift" : ""}`}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* <Route path="/sobre" element={<About />} /> */}
+            {/* <Route path="/contato" element={<Contact />} /> */}
+          </Routes>
+        </main>
+      </div>
     </Router>
   );
 }
