@@ -1,15 +1,17 @@
 .sidebar {
   position: fixed;
-  top: 60px;                 /* começa abaixo do header */
+  top: 60px;
   left: 0;
   width: 220px;
-  height: calc(100vh - 60px); /* ocupa a altura restante */
+  height: calc(100vh - 60px);
   background-color: #ffffff;
   color: #505258;
   padding: 20px;
   transition: transform 0.3s ease;
   z-index: 900;     
-  border-right: 2px solid #dfdfdf;;         /* menor que o header */
+  border-right: 2px solid #dfdfdf;
+  display: flex;
+  flex-direction: column;
 }
 
 /* sidebar aberta/fechada */
@@ -61,4 +63,23 @@
 
 .sidebar-toggle svg {
   display: block;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.footer-divider {
+  border-top: 2px solid #dfdfdf;
+  margin: 0 -20px;
+}
+
+.sidebar-footer-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  padding: 20px 20px;
 }
