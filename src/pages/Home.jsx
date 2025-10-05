@@ -2,8 +2,8 @@
 function Home() {
   return (
     <div>
-      <h1>Bem-vindo à página inicial!</h1>
-      <p>Esta é a tela Home do seu site React.</p>
+      <h1>Meus Eventos</h1>
+      <p>Veja aqui os eventos em que você se inscreveu</p>
     </div>
   );
 }

@@ -14,28 +14,28 @@ export default function Sidebar({ isOpen }) {
     <aside className={`sidebar ${isOpen ? "open" : "closed"}`}>
       <ul>
         <li>
-          <Link to="/">
+          <Link to="/home">
             <UserIcon width={20} height={20} />
             <span>Meus Eventos</span>
           </Link>
         </li>
 
         <li>
-          <Link to="/">
+          <Link to="/create-event">
             <CreateEventIcon width={20} height={20} />
             <span>Criar Evento</span>
           </Link>
         </li>
 
         <li>
-          <Link to="/">
+          <Link to="/events">
             <AvailableEventsIcon width={20} height={20} />
             <span>Eventos Disponíveis</span>
           </Link>
         </li>
 
         <li>
-          <Link to="/">
+          <Link to="/doubts">
             <DoubtsIcon width={20} height={20} />
             <span>Dúvidas</span>
           </Link>
@@ -49,7 +49,7 @@ export default function Sidebar({ isOpen }) {
         </li>
 
         <li>
-          <Link to="/">
+          <Link to="/certificates">
             <CertificateIcon width={20} height={20} />
             <span>Certificados</span>
           </Link>
@@ -58,7 +58,7 @@ export default function Sidebar({ isOpen }) {
 
       <div className="sidebar-footer">
         <div className="footer-divider"></div>
-        <Link to="/logout" className="sidebar-footer-link">
+        <Link to="/help-feedback" className="sidebar-footer-link">
           <FeedbackIcon width={16} height={16} />
           <span>Ajuda e Feedback</span>
         </Link>

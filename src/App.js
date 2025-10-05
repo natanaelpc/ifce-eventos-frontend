@@ -1,13 +1,15 @@
 // src/App.js
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-// import About from './pages/About';
-// import Contact from './pages/Contact';
+import Events from "./pages/Events"
+import CreateEvent from "./pages/CreateEvent"
+import Doubts from "./pages/Doubts";
+import Certificates from "./pages/Certificates";
+import Help from "./pages/Help";
+import Layout from "./components/Layout";
 import "./App.css";
 
 function App() {
@@ -19,24 +21,41 @@ function App() {
 
   return (
     <Router>
-      {/* Passamos a função pro Header */}
-      <Header toggleSidebar={toggleSidebar} />
+      <Routes>
+        {/* Páginas sem Header/Sidebar */}
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-      <div className="app-container">
-        {/* Sidebar à esquerda */}
-        <Sidebar isOpen={isOpen} />
+        {/* Páginas com Header/Sidebar */}
+        <Route path="/home" element={
+          <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <Home /> </Layout>
+        } />
 
-        {/* Conteúdo principal que se ajusta */}
-        <main className={`content ${isOpen ? "content-shift" : ""}`}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            {/* <Route path="/sobre" element={<About />} /> */}
-            {/* <Route path="/contato" element={<Contact />} /> */}
-          </Routes>
-        </main>
-      </div>
+        <Route path="/events" element={
+          <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <Events /> </Layout>
+        } />
+        
+        <Route path="/create-event" element={
+          <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <CreateEvent /> </Layout>
+        } />
+        
+        <Route path="/doubts" element={
+          <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <Doubts /> </Layout>
+        } />
+        
+        <Route path="/certificates" element={
+          <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <Certificates /> </Layout>
+        } />
+        
+        <Route path="/help-feedback" element={
+          <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <Help /> </Layout>
+        } />
+
+
+
+
+      </Routes>
+
     </Router>
   );
 }
