@@ -1,0 +1,176 @@
+/* ===== Importando Roboto ===== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* ===== Estrutura principal ===== */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f6f8;
+  color: #333;
+  padding-left: 10%;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ===== Card de login ===== */
+.auth-card {
+  background: #fff;
+  padding: 100px 50px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ===== Título ===== */
+.auth-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ===== Formulário ===== */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Cada campo (label + input) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-group label {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  color: #696767;
+}
+
+.form-group input {
+  padding: 16px 14px;
+  background-color: #F2F2F2;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  font-size: 15px;
+  transition: border-color 0.2s;
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* ===== Botões ===== */
+button {
+  padding: 18px;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  font-family: 'Roboto', sans-serif;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: #07635D;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #006ae1;
+}
+
+.btn-google {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  margin-top: 3px;
+}
+
+.btn-google:hover {
+  background-color: #f0f0f0;
+}
+
+.forgot-password {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #313131;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+  color: #07635D;
+}
+
+
+/* ===== Link de cadastro ===== */
+.auth-link {
+  margin-top: 25px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.auth-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+/* Rodapé */
+.login-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #FF7A30;
+  text-align: center;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 100;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login-footer a {
+  color: #07635D;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+.auth-title-image {
+  width: 200px;
+  height: auto;
+  margin: 0 auto 30px auto;
+  display: block;
+  object-fit: contain;
+}
