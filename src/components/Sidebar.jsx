@@ -42,7 +42,7 @@ export default function Sidebar({ isOpen }) {
         </li>
 
         <li>
-          <Link to="/">
+          <Link to="/filters">
             <FiltersIcon width={20} height={20} />
             <span>Filtros</span>
           </Link>

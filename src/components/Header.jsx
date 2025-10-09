@@ -11,13 +11,13 @@ function Header({ toggleSidebar }) {
   return (
     <header className="header">
       {/* Botão para abrir/fechar sidebar */}
-      <Link to="/" className="sidebar-toggle-icon" onClick={toggleSidebar}>
+      <button className="sidebar-toggle-icon" onClick={toggleSidebar}>
         <PanelIcon width={20} height={20} />
-      </Link>
+      </button>
 
       <nav>
         <ul className="nav-list">
-          <li><Link to="/"><NotificationsIcon width={20} height={20} /></Link></li>
+          <li><Link to="/notifications"><NotificationsIcon width={20} height={20} /></Link></li>
           <li><Link to="/help"><HelpIcon width={20} height={20} /></Link></li>
           <li><Link to="/settings"><SettingsIcon width={20} height={20} /></Link></li>
           <li><Link to="/profile"><ProfileIcon width={20} height={20} /></Link></li>

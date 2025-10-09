@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 /* ===== Estrutura principal ===== */
+html, body {
+  overflow-x: hidden;
+}
+
 .auth-container {
   display: flex;
   flex-direction: column;
@@ -12,7 +16,32 @@
   color: #333;
   padding-left: 10%;
   font-family: 'Roboto', sans-serif;
+
+/* Círculos de fundo */
+  background-image:
+
+    /* círculo 1 — verde escuro */
+    radial-gradient(circle at calc(90% - 30px) 200px, #07635D 300px, transparent 252px),
+    
+    /* círculo 2 — laranja escuro */
+    radial-gradient(circle at calc(88% + 80px) 560px, rgba(255, 150, 91, 0.9) 300px, transparent 253px),
+    
+    /* círculo 3 — laranja claro */
+    radial-gradient(circle at calc(85% - 250px) 150px, #FF7A30 400px, transparent 303px);
+
+  background-repeat: no-repeat;
 }
+
+/* ===== Cores de Background ===== */
+
+.auth-container.login {
+  background-color: #f4f6f8;
+}
+
+.auth-container.register {
+  background-color: #07635D;
+}
+
 
 /* ===== Card de login ===== */
 .auth-card {
@@ -173,4 +202,14 @@ button:active {
   margin: 0 auto 30px auto;
   display: block;
   object-fit: contain;
+}
+
+.ifce-logo {
+  position: absolute;
+  top: 200px;
+  left: calc(80% - 110px);
+  width: 286px;
+  height: 202px;
+  transform: translate(50%, -50%);
+  pointer-events: none;
 }

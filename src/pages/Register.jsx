@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
-import "./Login.css"; // usa o mesmo CSS do login por enquanto
+import "./Auth.css";
+import LogoIf from '../assets/logoif.png';
 
 function Register() {
   return (
-    <div className="auth-container">
+    <div className="auth-container register">
+      <img src={LogoIf} alt="LogoIf" className="ifce-logo" />
       <div className="auth-card">
         <h2 className="auth-title">Criar uma conta</h2>
 

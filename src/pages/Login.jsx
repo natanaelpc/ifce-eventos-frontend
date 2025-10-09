@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import Logo from '../assets/logo.png';
-import "./Login.css";
+import LogoIf from '../assets/logoif.png';
+import "./Auth.css";
 
 function Login() {
   return (
-    <div className="auth-container">
+    <div className="auth-container login">
+      
+      <img src={LogoIf} alt="LogoIf" className="ifce-logo" />
+
       <div className="auth-card">
         <img
           src={Logo}
