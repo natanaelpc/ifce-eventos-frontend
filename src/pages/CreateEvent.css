@@ -107,6 +107,11 @@
   color: #fff;
 }
 
+.category.selected {
+  background-color: #07635D;
+  color: #fff;
+}
+
 /* Botão principal */
 .btn-primary {
   padding: 14px 40px;
