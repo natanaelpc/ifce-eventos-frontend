@@ -50,7 +50,7 @@ export default function Sidebar({ isOpen }) {
 
         <li>
           <Link to="/certificates">
-            <CertificateIcon width={20} height={20} />
+            <CertificateIcon width={25} height={25} />
             <span>Certificados</span>
           </Link>
         </li>

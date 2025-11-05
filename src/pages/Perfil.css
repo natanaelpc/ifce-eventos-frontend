@@ -1,0 +1,153 @@
+.perfil-wrapper {
+  display: flex;
+  background-color: #fff;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: #333;
+}
+
+/* ===== Sidebar ===== */
+.perfil-sidebar {
+  width: 250px;
+  background-color: #f5f5f5;
+  padding: 40px 25px;
+  border-right: 1px solid #e5e5e5;
+}
+
+.perfil-sidebar h2 {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.perfil-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.perfil-sidebar li {
+  padding: 10px 0;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.perfil-sidebar li:hover {
+  color: #111;
+}
+
+.perfil-sidebar li.active {
+  font-weight: 600;
+  color: #000;
+}
+
+/* ===== Main content ===== */
+.perfil-main {
+  flex: 1;
+  padding: 60px 80px;
+}
+
+.perfil-main h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+}
+
+/* ===== Foto de perfil ===== */
+.perfil-photo-section {
+  margin-bottom: 40px;
+}
+
+.perfil-photo {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.perfil-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.perfil-photo-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  border-radius: 50%;
+  padding: 6px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.perfil-photo-label {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* ===== Formulário ===== */
+.perfil-form {
+  max-width: 700px;
+}
+
+.perfil-form section {
+  margin-bottom: 40px;
+}
+
+.perfil-form h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.perfil-note {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 20px;
+  max-width: 500px;
+}
+
+.perfil-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.perfil-field label {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.perfil-field input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.perfil-field input:focus {
+  outline: none;
+  border-color: #6a5acd;
+}
+
+/* ===== Botão ===== */
+.perfil-save-btn {
+  background-color: #2f2f6f;
+  color: #fff;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.perfil-save-btn:hover {
+  background-color: #413c9a;
+}
