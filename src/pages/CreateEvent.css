@@ -130,6 +130,15 @@
   background-color: #058076;
 }
 
+.event-form textarea {
+  width: 100%;
+  min-height: 100px;
+  resize: vertical;
+  padding: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .form-row {
