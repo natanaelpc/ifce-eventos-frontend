@@ -10,7 +10,7 @@ import Doubts from "./pages/Doubts";
 import Certificates from "./pages/Certificates";
 import Help from "./pages/Help";
 import Layout from "./components/Layout";
-import Perfil from "./pages/Perfil";
+import Profile from "./pages/Profile";
 import "./App.css";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/profile" element={<Profile />} />
 
         {/* Páginas com Header/Sidebar */}
         <Route path="/home" element={
