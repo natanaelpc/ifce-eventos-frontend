@@ -1,5 +1,5 @@
 /* Página geral */
-.create-event-page {
+.request-event-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,7 +145,7 @@
     flex-direction: column;
   }
   
-  .create-event-page {
+  .request-event-page {
     padding: 20px; /* reduz o padding lateral em telas pequenas */
   }
 }

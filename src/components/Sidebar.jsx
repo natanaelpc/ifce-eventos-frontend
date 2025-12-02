@@ -1,7 +1,7 @@
 // src/components/Sidebar.jsx
 import { Link } from "react-router-dom";
 import { ReactComponent as UserIcon } from "../assets/icons/User.svg";
-import { ReactComponent as CreateEventIcon } from "../assets/icons/CreateEvent.svg";
+import { ReactComponent as RequestEventIcon } from "../assets/icons/RequestEvent.svg";
 import { ReactComponent as AvailableEventsIcon } from "../assets/icons/AvailableEvents.svg";
 import { ReactComponent as DoubtsIcon } from "../assets/icons/Doubts.svg";
 import { ReactComponent as FiltersIcon } from "../assets/icons/Filters.svg";
@@ -21,9 +21,9 @@ export default function Sidebar({ isOpen }) {
         </li>
 
         <li>
-          <Link to="/create-event">
-            <CreateEventIcon width={20} height={20} />
-            <span>Criar Evento</span>
+          <Link to="/request-event">
+            <RequestEventIcon width={20} height={20} />
+            <span>Solicitar Evento</span>
           </Link>
         </li>
 

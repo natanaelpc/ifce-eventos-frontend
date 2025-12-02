@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./CreateEvent.css";
+import "./RequestEvent.css";
 
-function CreateEvent() {
+function RequestEvent() {
   const [eventList, setEventList] = useState(() => {
     // carrega do localStorage ao iniciar (modo de simulação)
     const saved = localStorage.getItem("eventList");
@@ -64,8 +64,8 @@ function CreateEvent() {
   };
 
   return (
-    <div className="create-event-container">
-      <h2 className="page-title">Criar Evento</h2>
+    <div className="request-event-container">
+      <h2 className="page-title">Solicitar Evento</h2>
 
       <form className="event-form" onSubmit={handleSubmit}>
         <div className="form-row">
@@ -128,4 +128,4 @@ function CreateEvent() {
 
 }
 
-export default CreateEvent;
+export default RequestEvent;

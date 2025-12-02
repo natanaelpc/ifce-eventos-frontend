@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Events from "./pages/Events"
-import CreateEvent from "./pages/CreateEvent"
+import RequestEvent from "./pages/RequestEvent"
 import Doubts from "./pages/Doubts";
 import Certificates from "./pages/Certificates";
 import Help from "./pages/Help";
@@ -36,8 +36,8 @@ function App() {
           <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <Events /> </Layout>
         } />
         
-        <Route path="/create-event" element={
-          <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <CreateEvent /> </Layout>
+        <Route path="/request-event" element={
+          <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <RequestEvent /> </Layout>
         } />
         
         <Route path="/doubts" element={
