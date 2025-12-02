@@ -18,12 +18,9 @@ function RequestEvent() {
 
     const newEvent = {
       title: formData.get("title"),
-      type: formData.get("type"),
       description: formData.get("description"),
       date: formData.get("date"),
-      time: formData.get("time"),
-      category: selectedModality,
-      location: formData.get("location"),
+      modality: selectedModality,
     };
 
     try {
@@ -75,14 +72,8 @@ function RequestEvent() {
           </div>
 
           <div className="form-group small">
-            <label htmlFor="type">Tipo</label>
-            <select id="type" name="type" required>
-              <option value="">Selecione...</option>
-              <option value="Palestra">Palestra</option>
-              <option value="Minicurso">Minicurso</option>
-              <option value="Workshop">Workshop</option>
-              <option value="Oficina">Oficina</option>
-            </select>
+            <label htmlFor="date">Data</label>
+            <input id="date" name="date" type="date" required />
           </div>
         </div>
 
@@ -118,7 +109,7 @@ function RequestEvent() {
 
         <div className="form-row center">
           <button type="submit" className="btn-primary">
-            Criar Evento
+            Solicitar Evento
           </button>
         </div>
       </form>
