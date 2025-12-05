@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Events from "./pages/Events"
 import RequestEvent from "./pages/RequestEvent"
+import ApproveEvents from "./pages/ApproveEvents"
 import Doubts from "./pages/Doubts";
 import Certificates from "./pages/Certificates";
 import Help from "./pages/Help";
@@ -38,6 +39,10 @@ function App() {
         
         <Route path="/request-event" element={
           <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <RequestEvent /> </Layout>
+        } />
+        
+        <Route path="/approve-event" element={
+          <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <ApproveEvents /> </Layout>
         } />
         
         <Route path="/doubts" element={

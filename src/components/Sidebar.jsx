@@ -26,6 +26,13 @@ export default function Sidebar({ isOpen }) {
             <span>Solicitar Evento</span>
           </Link>
         </li>
+        
+        <li>
+          <Link to="/approve-event">
+            <RequestEventIcon width={20} height={20} />
+            <span>Aprovar Eventos</span>
+          </Link>
+        </li>
 
         <li>
           <Link to="/events">
