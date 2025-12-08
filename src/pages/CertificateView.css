@@ -1,0 +1,77 @@
+/* Isolamento — garante que nada do Layout afete esta tela */
+.cert-view-page .cert-view-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.cert-view-page .cert-view-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cert-view-page .cert-time {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* BOTÕES */
+.cert-view-page .cert-view-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cert-view-page .btn-print,
+.cert-view-page .btn-pdf {
+  padding: 10px 20px;
+  border: 2px solid #4e2aff;
+  background: transparent;
+  color: #4e2aff;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.cert-view-page .btn-print:hover,
+.cert-view-page .btn-pdf:hover {
+  background: #4e2aff;
+  color: white;
+}
+
+/* CARD de pré-visualização */
+.cert-view-page .cert-preview-box {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Certificado interno */
+.cert-view-page .cert-paper {
+  margin-top: 25px;
+  padding: 40px;
+  background: #fffcf5;
+  border: 2px solid #d8d2b0;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.cert-view-page .cert-paper h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.cert-view-page .cert-signature {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #333;
+  display: block;
+}
