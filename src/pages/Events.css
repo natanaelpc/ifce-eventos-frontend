@@ -1,0 +1,99 @@
+.eventos-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* GRID COM 3 COLUNAS */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* CARD BASE */
+.event-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+/* BARRA DEGRADÊ LATERAL */
+.event-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(to bottom, #8f8f8f, #494949);
+  border-radius: 6px 0 0 6px;
+}
+
+.event-card:hover {
+  transform: scale(1.03);
+}
+
+/* CONTEÚDO INTERNO SEM PEGAR NA BARRA */
+.card-content {
+  margin-left: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TÍTULO */
+.card-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* AUTOR */
+.card-author {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* DESCRIÇÃO */
+.desc {
+  margin: 10px 0 15px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+/* INFO (DATA E MODALIDADE) */
+.card-info {
+  font-size: 14px;
+  margin: 3px 0;
+  color: #555;
+}
+
+/* BOTÃO ALINHADO À DIREITA */
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* BOTÃO */
+.btn-subscribe {
+  padding: 10px 16px;
+  background-color: #07635D;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn-subscribe:hover {
+  background-color: #058076;
+}
