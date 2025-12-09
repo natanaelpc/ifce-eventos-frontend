@@ -6,7 +6,7 @@ function ApproveEvents() {
 
   const fetchEvents = async () => {
     try {
-      const res = await fetch("http://localhost:3001/eventos?status=PENDENTE");
+      const res = await fetch("http://localhost:3001/aprov_eventos?status=PENDENTE");
       const data = await res.json();
       setEvents(data);
     } catch (err) {
@@ -19,7 +19,7 @@ function ApproveEvents() {
   }, []);
 
   const approveEvent = async (id) => {
-    await fetch(`http://localhost:3001/eventos/${id}`, {
+    await fetch(`http://localhost:3001/aprov_eventos/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: "APROVADO" })
@@ -28,7 +28,7 @@ function ApproveEvents() {
   };
 
   const rejectEvent = async (id) => {
-    await fetch(`http://localhost:3001/eventos/${id}`, {
+    await fetch(`http://localhost:3001/aprov_eventos/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: "REJEITADO" })
@@ -40,22 +40,28 @@ function ApproveEvents() {
     <div className="approve-page">
       <h2 className="approve-title">Aprovar Eventos</h2>
 
-      <div className="event-list">
+      <div className="approve-list">
         {events.length === 0 ? (
           <p>Nenhum evento pendente.</p>
         ) : (
           events.map((event) => (
-            <div key={event.id} className="event-card">
+            <div key={event.id} className="approve-card">
               <h3>{event.title}</h3>
               <p><strong>Data:</strong> {event.date}</p>
               <p><strong>Modalidade:</strong> {event.modality}</p>
-              <p className="desc">{event.description}</p>
+              <p className="approve-desc">{event.description}</p>
 
-              <div className="actions">
-                <button onClick={() => approveEvent(event.id)} className="btn approve">
+              <div className="approve-actions">
+                <button
+                  onClick={() => approveEvent(event.id)}
+                  className="approve-btn approve-btn-yes"
+                >
                   Aprovar
                 </button>
-                <button onClick={() => rejectEvent(event.id)} className="btn reject">
+                <button
+                  onClick={() => rejectEvent(event.id)}
+                  className="approve-btn approve-btn-no"
+                >
                   Rejeitar
                 </button>
               </div>
