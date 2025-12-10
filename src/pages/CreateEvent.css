@@ -135,3 +135,10 @@
     padding: 20px; /* reduz o padding lateral em telas pequenas */
   }
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  width: 100%;
+}

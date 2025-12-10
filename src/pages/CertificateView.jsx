@@ -1,33 +1,37 @@
 import React from "react";
-import { CheckCircle, Printer, FileText } from "react-feather";
+import { useParams } from "react-router-dom";
+import { FaCheckCircle } from "react-icons/fa";
+import "./CertificateView.css";
 
-export default function CertificateDetails() {
+const CertificateView = () => {
+  const { id } = useParams();
+
   return (
-    <div className="max-w-4xl mx-auto py-10">
-      <div className="text-center mb-8">
-        <CheckCircle className="text-green-500 mx-auto" size={50} />
-        <h1 className="text-3xl font-semibold mt-4">Certificado emitido com sucesso</h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Certificado visualizado em 04/12/2025 às 08:49:12
-        </p>
+    <div className="cert-view-container">
+      <div className="cert-view-header">
+        <FaCheckCircle size={30} color="#4CAF50" />
+        <h1>Certificado gerado com sucesso</h1>
+        <p className="cert-time">Visualizado em 04/12/2025 às 08:49:12</p>
 
-        <div className="flex justify-center gap-4 mt-5">
-          <button className="bg-gray-200 px-4 py-2 rounded flex items-center gap-2">
-            <Printer size={18} /> Imprimir
-          </button>
-          <button className="bg-gray-200 px-4 py-2 rounded flex items-center gap-2">
-            <FileText size={18} /> PDF
-          </button>
+        <div className="cert-view-buttons">
+          <button className="btn-print">🖨 Imprimir</button>
+          <button className="btn-pdf">📄 Baixar PDF</button>
         </div>
       </div>
 
-      <div className="border rounded-lg p-6 shadow">
-        <img
-          src="/assets/certificado-modelo.png"
-          alt="Certificado"
-          className="w-full rounded"
-        />
+      <div className="cert-preview-box">
+        <h2>Certificado #{id}</h2>
+        <p>Este certificado confirma sua participação na atividade selecionada.</p>
+
+        <div className="cert-paper">
+          <h1>Certificado</h1>
+          <p>Concedido a <strong>Natanael</strong></p>
+          <p>Por sua participação e contribuição no evento SEINFO 2025</p>
+          <span className="cert-signature">_______________________<br />Coordenação SEINFO</span>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default CertificateView;

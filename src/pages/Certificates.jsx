@@ -1,8 +1,9 @@
 import React from "react";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import CertificateIllustration from "../assets/illustrations/certificate-art.png";
 import "./Certificates.css";
-import "./CertificateView.css";
+
 
 const Certificates = () => {
   const certificates = [
@@ -32,7 +33,7 @@ const Certificates = () => {
     <div className="cert-page-container">
       <div className="cert-card">
         <img
-          src="/img/cert-illustration.png"
+          src={CertificateIllustration}
           alt="Illustration"
           className="cert-illustration"
         />
