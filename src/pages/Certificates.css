@@ -99,3 +99,34 @@
 .cert-download-btn:hover {
   background: #5c0fd3;
 }
+
+/* ===== RESPONSIVIDADE CERTIFICADOS ===== */
+
+/* telas até 1024px */
+@media (max-width: 1024px) {
+  .cert-card {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+/* telas até 768px */
+@media (max-width: 768px) {
+  .cert-page-container {
+    padding: 20px 10px;
+  }
+
+  .cert-card {
+    padding: 18px 14px;
+  }
+
+  .cert-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .cert-download-btn {
+    align-self: flex-end;
+  }
+}

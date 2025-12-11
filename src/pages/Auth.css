@@ -213,3 +213,155 @@ button:active {
   transform: translate(50%, -50%);
   pointer-events: none;
 }
+
+/* ===== RESPONSIVIDADE LOGIN / CADASTRO ===== */
+
+/* notebooks menores / tablets em landscape */
+@media (max-width: 1024px) {
+  .auth-container {
+    justify-content: center;
+    align-items: center;
+    padding: 32px 16px;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .auth-card {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* tablet em pé / celulares maiores */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 24px 12px;
+  }
+
+  .auth-card {
+    padding: 24px 18px;
+    max-width: 420px;
+    width: 100%;
+  }
+
+  .auth-title {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .auth-form {
+    width: 100%;
+  }
+
+  .auth-form .form-group {
+    width: 100%;
+  }
+
+  .auth-form .form-group input,
+  .auth-form .form-group select,
+  .auth-form .form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .auth-card button,
+  .auth-card .btn-primary,
+  .auth-card .btn-secondary {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .login-footer,
+  .register-footer {
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  .login-footer p,
+  .register-footer p {
+    font-size: 14px;
+  }
+
+  /* se o logo do IFCE estiver posicionado absoluto, trazemos ele para o fluxo */
+  .ifce-logo {
+    position: static;
+    margin: 0 auto 16px auto;
+    display: block;
+    transform: none;
+    max-width: 160px;
+    height: auto;
+  }
+}
+
+/* celulares pequenos (ex: 360–400px de largura) */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 20px 10px;
+  }
+
+  .auth-card {
+    padding: 20px 14px;
+  }
+
+  .auth-title {
+    font-size: 20px;
+  }
+
+  .auth-form .form-group label {
+    font-size: 14px;
+  }
+
+  .auth-form .form-group input,
+  .auth-form .form-group select,
+  .auth-form .form-group textarea {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}
+
+/* ===== AJUSTE EXTRA PARA LOGIN/CADASTRO EM TELAS MUITO ESTREITAS ===== */
+@media (max-width: 480px) {
+  html,
+  body {
+    overflow-x: hidden; /* garante que nada vaze para o lado */
+  }
+
+  .auth-container {
+    padding: 16px 6px;  /* menos espaço lateral */
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .auth-card {
+    width: 100%;
+    max-width: 100%;    /* nunca passa da largura da tela */
+    padding: 20px 12px; /* reduz um pouco o padding interno */
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .auth-form .form-group,
+  .auth-form input,
+  .auth-form select,
+  .auth-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .auth-card button,
+  .auth-card .btn-primary {
+    width: 100%;
+  }
+
+  /* se o logo do IFCE estiver grande demais, dá só uma leve reduzida */
+  .ifce-logo {
+    max-width: 140px;
+  }
+
+  /* se tiver essa imagem do IFCE EVENTS dentro do card */
+  .auth-title-image {
+    max-width: 180px;
+    height: auto;
+  }
+}

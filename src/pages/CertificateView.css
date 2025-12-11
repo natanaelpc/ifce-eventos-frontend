@@ -76,3 +76,54 @@
   display: block;
 }
 
+/* ==== RESPONSIVIDADE - VISUALIZAÇÃO DO CERTIFICADO ==== */
+
+/* notebooks / tablets */
+@media (max-width: 1024px) {
+  .cert-view-page .cert-view-container {
+    margin: 30px 16px;
+  }
+}
+
+/* tablet em pé / celular */
+@media (max-width: 768px) {
+  .cert-view-page .cert-view-container {
+    margin: 20px 10px;
+    padding: 16px 12px;
+  }
+
+  .cert-view-page .cert-view-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cert-view-page .btn-print,
+  .cert-view-page .btn-pdf {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cert-view-page .cert-paper {
+    padding: 16px 12px;
+  }
+
+  .cert-view-page .cert-paper h1 {
+    font-size: 24px;
+  }
+
+  .cert-view-page .cert-paper p {
+    font-size: 13px;
+  }
+}
+
+/* celulares menores */
+@media (max-width: 480px) {
+  .cert-view-page .cert-view-container {
+    margin: 16px 8px;
+    padding: 14px 10px;
+  }
+
+  .cert-view-page .cert-paper h1 {
+    font-size: 22px;
+  }
+}

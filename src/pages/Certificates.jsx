@@ -38,20 +38,20 @@ const Certificates = () => {
           className="cert-illustration"
         />
 
-        <h2>Hello, Natanael. Here are your certificates.</h2>
+        <h2>Olá, Natanael. Aqui estão seus certificados.</h2>
         <p className="cert-subtitle">SEINFO 2025 - IFCE Campus Crato</p>
 
         <div className="cert-list">
           {certificates.map((item) => (
             <div key={item.id} className="cert-item">
               <div className="cert-left">
-                <p className="cert-item-title">Activity Certificate</p>
+                <p className="cert-item-title">Certificado de Atividade</p>
                 <p className="cert-item-event">{item.event}</p>
 
                 {item.available ? (
-                  <span className="cert-available-tag">Available for download</span>
+                  <span className="cert-available-tag">Disponível para download</span>
                 ) : (
-                  <span className="cert-unavailable-tag">Not available yet</span>
+                  <span className="cert-unavailable-tag">Ainda não disponível</span>
                 )}
               </div>
 

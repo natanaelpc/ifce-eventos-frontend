@@ -151,3 +151,52 @@
 .perfil-save-btn:hover {
   background-color: #413c9a;
 }
+
+/* ==== RESPONSIVIDADE - PERFIL ==== */
+
+/* notebooks menores / tablets */
+@media (max-width: 1024px) {
+  .perfil-main {
+    padding: 40px 32px;
+  }
+}
+
+/* tablet em pé / celular */
+@media (max-width: 768px) {
+  .perfil-wrapper {
+    flex-direction: column; /* sidebar em cima, conteúdo embaixo */
+  }
+
+  .perfil-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 24px 16px;
+  }
+
+  .perfil-main {
+    padding: 20px 16px;
+  }
+
+  /* evita que a foto e textos fiquem esmagados lado a lado */
+  .perfil-photo-section {
+    margin-bottom: 24px;
+  }
+
+  /* se em algum momento você usar display flex aqui, já garante coluna */
+  .perfil-photo-section,
+  .perfil-photo-label {
+    display: block;
+  }
+}
+
+/* celulares menores */
+@media (max-width: 480px) {
+  .perfil-main {
+    padding: 16px 12px;
+  }
+
+  .perfil-main h1 {
+    font-size: 1.4rem;
+  }
+}
