@@ -11,6 +11,7 @@ import Certificates from "./pages/Certificates";
 import Help from "./pages/Help";
 import Layout from "./components/Layout";
 import Profile from "./pages/Profile";
+import CertificateView from "./pages/CertificateView";
 import "./App.css";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
+        
 
         {/* Páginas com Header/Sidebar */}
         <Route path="/home" element={
@@ -53,6 +55,11 @@ function App() {
         <Route path="/help-feedback" element={
           <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <Help /> </Layout>
         } />
+
+        <Route path="/certificate/:id" element={
+          <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <CertificateView /> </Layout>
+        } />
+
 
 
 

@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import { ReactComponent as UserIcon } from "../assets/icons/User.svg";
 import { ReactComponent as CreateEventIcon } from "../assets/icons/CreateEvent.svg";
 import { ReactComponent as AvailableEventsIcon } from "../assets/icons/AvailableEvents.svg";
-import { ReactComponent as DoubtsIcon } from "../assets/icons/Doubts.svg";
-import { ReactComponent as FiltersIcon } from "../assets/icons/Filters.svg";
+// import { ReactComponent as DoubtsIcon } from "../assets/icons/Doubts.svg"; // removido
+// import { ReactComponent as FiltersIcon } from "../assets/icons/Filters.svg"; // removido
 import { ReactComponent as CertificateIcon } from "../assets/icons/Certificate.svg";
 import { ReactComponent as FeedbackIcon } from "../assets/icons/Feedback.svg";
+import { ReactComponent as PanelIcon } from "../assets/icons/Panel.svg"; // ícone para Aprovações
 import "./Sidebar.css";
+import { useUser } from "../context/UserContext";
 
 export default function Sidebar({ isOpen }) {
+  const { user } = useUser();
+
   return (
     <aside className={`sidebar ${isOpen ? "open" : "closed"}`}>
       <ul>
@@ -34,19 +38,17 @@ export default function Sidebar({ isOpen }) {
           </Link>
         </li>
 
-        <li>
-          <Link to="/doubts">
-            <DoubtsIcon width={20} height={20} />
-            <span>Dúvidas</span>
-          </Link>
-        </li>
+        {/* Card "Aprovações" visível apenas para admin */}
+        {user?.role === "admin" && (
+          <li>
+            <Link to="/approvals">
+              <PanelIcon width={20} height={20} />
+              <span>Aprovações</span>
+            </Link>
+          </li>
+        )}
 
-        <li>
-          <Link to="/filters">
-            <FiltersIcon width={20} height={20} />
-            <span>Filtros</span>
-          </Link>
-        </li>
+        {/* Dúvidas e Filtros REMOVIDOS */}
 
         <li>
           <Link to="/certificates">
@@ -56,6 +58,7 @@ export default function Sidebar({ isOpen }) {
         </li>
       </ul>
 
+      {/* Card de ajuda/feedback que você comentou que já fica abaixo da sidebar */}
       <div className="sidebar-footer">
         <div className="footer-divider"></div>
         <Link to="/help-feedback" className="sidebar-footer-link">
