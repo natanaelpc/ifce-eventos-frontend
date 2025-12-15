@@ -149,3 +149,37 @@
     padding: 20px; /* reduz o padding lateral em telas pequenas */
   }
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* ===== AJUSTE EXTRA PARA TELAS BEM ESTREITAS ===== */
+@media (max-width: 480px) {
+  .create-event-page {
+    padding: 12px 6px; /* menos padding lateral pra caber melhor */
+  }
+
+  .event-form {
+    padding: 18px 12px;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;   /* garante que não passe da largura da tela */
+    box-sizing: border-box;
+  }
+
+  .event-form input,
+  .event-form select,
+  .event-form textarea {
+    width: 100%;
+    box-sizing: border-box; /* evita somar borda/padding à largura */
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+

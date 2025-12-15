@@ -53,3 +53,13 @@
   display: flex;
   align-items: center;
 }
+
+/* ===== CABEÇALHO FIXO ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999; /* aparece acima da sidebar */
+  background: #ffffff; /* mantém o fundo igual ao já existente */
+}

@@ -1,0 +1,64 @@
+.help-container {
+  padding: 20px;
+  color: #333;
+}
+
+.help-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.help-description {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.help-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  max-width: 600px;
+}
+
+.help-card h2 {
+  margin-bottom: 15px;
+}
+
+.help-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.help-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.help-form input,
+.help-form select,
+.help-form textarea {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.help-button {
+  padding: 12px;
+  border: none;
+  background-color: #6b3fa0;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.help-button:hover {
+  background-color: #552f85;
+}
+

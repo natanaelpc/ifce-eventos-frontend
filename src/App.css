@@ -1,7 +1,7 @@
 :root{
   --sidebar-width: 310px;       /* espaçamento entre a sidebar e o conteúdo */
   --sidebar-collapsed: 100px;   /* espaçamento entre a sidebar e o conteúdo quando fechada */
-  /* --header-height: 60px; */
+  --header-height: 60px;
 }
 
 .app-container {
@@ -21,4 +21,30 @@
 /* quando a sidebar está aberta */
 .content-shift {
   margin-left: var(--sidebar-width);
+}
+
+/* ===== RESPONSIVIDADE DO LAYOUT PRINCIPAL ===== */
+/* telas até 1024px (tablet / janela reduzida) */
+@media (max-width: 1024px) {
+  .content {
+    padding: 20px 16px;
+    box-sizing: border-box;
+  }
+}
+
+/* telas até 768px (tablet em pé / celulares grandes) */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  /* conteúdo ocupa a tela toda */
+  .content {
+    margin-left: 0;
+    padding: 16px 12px;
+  }
+
+  .content.content-shift {
+    margin-left: 0;
+  }
 }

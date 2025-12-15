@@ -1,0 +1,132 @@
+/* Container geral da página */
+.cert-page-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Card principal */
+.cert-card {
+  max-width: 900px;
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Ilustração */
+.cert-illustration {
+  width: 180px;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+.cert-subtitle {
+  margin-top: -10px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+/* Lista de certificados */
+.cert-list {
+  margin-top: 30px;
+}
+
+/* Card individual (certificado) */
+.cert-item {
+  background: rgba(245, 245, 245, 0.7);
+  border: 1px solid rgba(210, 210, 210, 0.6);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;        /* 🔥 separa um card do outro */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cert-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Textos */
+.cert-item-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+.cert-item-event {
+  margin: 4px 0 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Tag de disponibilidade */
+.cert-available-tag {
+  background: #d5ffe3;
+  color: #2b7b3f;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.cert-unavailable-tag {
+  background: #ffe0e0;
+  color: #a33a3a;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Botão de download */
+.cert-download-btn {
+  background: #7b2ff7;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.cert-download-btn:hover {
+  background: #5c0fd3;
+}
+
+/* ===== RESPONSIVIDADE CERTIFICADOS ===== */
+
+/* telas até 1024px */
+@media (max-width: 1024px) {
+  .cert-card {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+/* telas até 768px */
+@media (max-width: 768px) {
+  .cert-page-container {
+    padding: 20px 10px;
+  }
+
+  .cert-card {
+    padding: 18px 14px;
+  }
+
+  .cert-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .cert-download-btn {
+    align-self: flex-end;
+  }
+}

@@ -1,42 +1,36 @@
-import { createContext, useContext, useState, useEffect } from "react";
+// src/context/UserContext.jsx
+import { createContext, useContext, useEffect, useState } from "react";
 
-const UserContext = createContext();
+const UserContext = createContext(null);
 
 export function UserProvider({ children }) {
-  const [token, setToken] = useState(null);
-  const [role, setRole] = useState(null);
+  // Exemplo de shape: { name, email, role: "admin" | "participantes" }
+  const [user, setUser] = useState(null);
 
-  // Carrega token e role do localStorage ao iniciar o app
+  // Carrega do localStorage (para manter logado ao recarregar)
   useEffect(() => {
-    const savedToken = localStorage.getItem("token");
-    const savedRole = localStorage.getItem("role");
-
-    if (savedToken && savedRole) {
-      setToken(savedToken);
-      setRole(savedRole);
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (err) {
+        console.error("Erro ao ler usuário do localStorage", err);
+      }
     }
   }, []);
 
-  // Função chamada no login
-  const login = (jwt, userRole) => {
-    setToken(jwt);
-    setRole(userRole);
-
-    localStorage.setItem("token", jwt);
-    localStorage.setItem("role", userRole);
+  const login = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
   };
 
-  // Função chamada no logout
   const logout = () => {
-    setToken(null);
-    setRole(null);
-
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
+    setUser(null);
+    localStorage.removeItem("user");
   };
 
   return (
-    <UserContext.Provider value={{ token, role, login, logout }}>
+    <UserContext.Provider value={{ user, login, logout }}>
       {children}
     </UserContext.Provider>
   );
