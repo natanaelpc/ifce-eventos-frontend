@@ -1,64 +1,6 @@
 {
-  "aprov_eventos": [
-    {
-      "id": 1,
-      "title": "Workshop de IA",
-      "date": "2025-02-10",
-      "modality": "Presencial",
-      "description": "Aprenda IA com exemplos práticos",
-      "status": "PENDENTE"
-    },
-    {
-      "id": 2,
-      "title": "Curso de React",
-      "date": "2025-02-12",
-      "modality": "Remota",
-      "description": "Curso intensivo de ReactJS",
-      "status": "PENDENTE"
-    }
-  ],
-
   "eventos": [
-    {
-      "id": 1,
-      "title": "Workshop de React Avançado",
-      "date": "2025-02-15",
-      "modality": "Presencial",
-      "description": "Aprenda padrões avançados, hooks customizados, otimização e arquitetura em React.",
-      "status": "APROVADO"
-    },
-    {
-      "id": 2,
-      "title": "Imersão em Spring Boot",
-      "date": "2025-03-02",
-      "modality": "Remota",
-      "description": "Curso intensivo sobre APIs REST, segurança, JPA e integração com bancos de dados.",
-      "status": "APROVADO"
-    },
-    {
-      "id": 3,
-      "title": "Maratona de Programação",
-      "date": "2025-04-20",
-      "modality": "Presencial",
-      "description": "Competição de lógica, algoritmos e resolução de problemas em equipe.",
-      "status": "APROVADO"
-    },
-    {
-      "id": 4,
-      "title": "Introdução à Cibersegurança",
-      "date": "2025-03-28",
-      "modality": "Remota",
-      "description": "Conceitos básicos de segurança digital, análise de vulnerabilidades e melhores práticas.",
-      "status": "APROVADO"
-    },
-    {
-      "id": 5,
-      "title": "Palestra sobre IA Generativa",
-      "date": "2025-02-10",
-      "modality": "Presencial",
-      "description": "Uma visão geral sobre modelos de linguagem, aplicações e o futuro da IA.",
-      "status": "APROVADO"
-    }
+  ],
+  "inscricoes": [
   ]
 }
-

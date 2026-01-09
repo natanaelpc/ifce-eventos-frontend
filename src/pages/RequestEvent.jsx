@@ -2,18 +2,20 @@ import { useState } from "react";
 import "./RequestEvent.css";
 
 function RequestEvent() {
-  const [eventList, setEventList] = useState(() => {
-    // carrega do localStorage ao iniciar (modo de simulação)
-    const saved = localStorage.getItem("eventList");
-    return saved ? JSON.parse(saved) : [];
-  });
   const [selectedModality, setSelectedModality] = useState(null);
 
   const handleModalitySelect = (mod) => {
     setSelectedModality(mod);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!selectedModality) {
+      alert("Selecione uma modalidade");
+      return;
+    }
+
     const formData = new FormData(e.target);
 
     const newEvent = {
@@ -21,39 +23,27 @@ function RequestEvent() {
       description: formData.get("description"),
       date: formData.get("date"),
       modality: selectedModality,
+      status: "PENDENTE"
     };
 
     try {
-      // =======================================================
-      // integração com o backend (Spring Boot)
-      /*
-      const response = await fetch("http://localhost:8080/api/eventos", {
+      const response = await fetch("http://localhost:3001/eventos", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(newEvent),
+        body: JSON.stringify(newEvent)
       });
 
-      if (!response.ok) throw new Error("Erro ao criar evento");
-      const savedEvent = await response.json();
+      if (!response.ok) {
+        throw new Error("Erro ao criar evento");
+      }
 
-      setEventList((prev) => [...prev, savedEvent]);
-      */
-
-      // =======================================================
-      // simulação local (sem backend)
-      const simulatedEvent = { id: Date.now(), ...newEvent };
-      setEventList((prev) => {
-        const updated = [...prev, simulatedEvent];
-        localStorage.setItem("eventList", JSON.stringify(updated));
-        return updated;
-      });
-
-      // =======================================================
       // limpa formulário
       e.target.reset();
       setSelectedModality(null);
+
+      alert("Evento solicitado com sucesso!");
     } catch (error) {
       console.error("Erro ao criar evento:", error);
       alert("Não foi possível criar o evento. Tente novamente.");
@@ -97,7 +87,9 @@ function RequestEvent() {
                 <button
                   key={mod}
                   type="button"
-                  className={`category ${selectedModality === mod ? "selected" : ""}`}
+                  className={`category ${
+                    selectedModality === mod ? "selected" : ""
+                  }`}
                   onClick={() => handleModalitySelect(mod)}
                 >
                   {mod}
@@ -115,8 +107,6 @@ function RequestEvent() {
       </form>
     </div>
   );
-
-
 }
 
 export default RequestEvent;

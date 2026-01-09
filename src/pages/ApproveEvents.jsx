@@ -6,7 +6,9 @@ function ApproveEvents() {
 
   const fetchEvents = async () => {
     try {
-      const res = await fetch("http://localhost:3001/aprov_eventos?status=PENDENTE");
+      const res = await fetch(
+        "http://localhost:3001/eventos?status=PENDENTE"
+      );
       const data = await res.json();
       setEvents(data);
     } catch (err) {
@@ -19,21 +21,31 @@ function ApproveEvents() {
   }, []);
 
   const approveEvent = async (id) => {
-    await fetch(`http://localhost:3001/aprov_eventos/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status: "APROVADO" })
-    });
-    fetchEvents();
+    try {
+      await fetch(`http://localhost:3001/eventos/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "APROVADO" })
+      });
+
+      fetchEvents();
+    } catch (err) {
+      console.error("Erro ao aprovar evento:", err);
+    }
   };
 
   const rejectEvent = async (id) => {
-    await fetch(`http://localhost:3001/aprov_eventos/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status: "REJEITADO" })
-    });
-    fetchEvents();
+    try {
+      await fetch(`http://localhost:3001/eventos/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "REJEITADO" })
+      });
+
+      fetchEvents();
+    } catch (err) {
+      console.error("Erro ao rejeitar evento:", err);
+    }
   };
 
   return (
@@ -47,8 +59,15 @@ function ApproveEvents() {
           events.map((event) => (
             <div key={event.id} className="approve-card">
               <h3>{event.title}</h3>
-              <p><strong>Data:</strong> {event.date}</p>
-              <p><strong>Modalidade:</strong> {event.modality}</p>
+
+              <p>
+                <strong>Data:</strong> {event.date}
+              </p>
+
+              <p>
+                <strong>Modalidade:</strong> {event.modality}
+              </p>
+
               <p className="approve-desc">{event.description}</p>
 
               <div className="approve-actions">
@@ -58,6 +77,7 @@ function ApproveEvents() {
                 >
                   Aprovar
                 </button>
+
                 <button
                   onClick={() => rejectEvent(event.id)}
                   className="approve-btn approve-btn-no"
