@@ -1,30 +1,36 @@
 import React from "react";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import CertificateIllustration from "../assets/illustrations/certificate-art.png";
 import "./Certificates.css";
 
+// ✅ Correção do caminho (dentro de src/)
+import CertificateIllustration from "../assets/illustrations/certificate-art.png";
+
+// ✅ Hook do seu contexto
+import { useUser } from "../context/UserContext";
 
 const Certificates = () => {
+  const { user } = useUser();
+
+  // ✅ Nome do usuário logado, ou fallback
+  const userName = user?.name?.trim() ? user.name : "Usuário";
+
   const certificates = [
     {
       id: 1,
-      title: "Opening, Round Table, Hackathon and Talk",
       event:
-        "Opening, Round Table, Hackathon and Talk (Brisanet, Paguru, SEBRAE, Unileão, HackInCariri)",
+        "Abertura, Mesa Redonda, Hackathon e Palestra (Brisanet, Paguru, SEBRAE, Unileão, HackInCariri)",
       available: true,
     },
     {
       id: 2,
-      title: "Beyond Code: How Experience Defines a Product's Success",
-      event: "Beyond Code: How Experience Defines a Product's Success",
+      event: "Além do Código: Como a Experiência Define o Sucesso de um Produto",
       available: true,
     },
     {
       id: 3,
-      title: "Remote IT Market: What This Universe Expects from You",
       event:
-        "Remote IT Market: What This Universe Expects from You. Lessons and Learnings",
+        "Mercado de TI Remoto: O Que Este Universo Espera de Você. Lições e Aprendizados.",
       available: true,
     },
   ];
@@ -34,11 +40,11 @@ const Certificates = () => {
       <div className="cert-card">
         <img
           src={CertificateIllustration}
-          alt="Illustration"
+          alt="Certificates Illustration"
           className="cert-illustration"
         />
 
-        <h2>Olá, Natanael. Aqui estão seus certificados.</h2>
+        <h2>Olá, {userName}. Aqui estão seus certificados.</h2>
         <p className="cert-subtitle">SEINFO 2025 - IFCE Campus Crato</p>
 
         <div className="cert-list">
@@ -49,7 +55,9 @@ const Certificates = () => {
                 <p className="cert-item-event">{item.event}</p>
 
                 {item.available ? (
-                  <span className="cert-available-tag">Disponível para download</span>
+                  <span className="cert-available-tag">
+                    Disponível para download
+                  </span>
                 ) : (
                   <span className="cert-unavailable-tag">Ainda não disponível</span>
                 )}

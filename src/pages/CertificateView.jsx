@@ -3,8 +3,15 @@ import { useParams } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import "./CertificateView.css";
 
+// ✅ Hook do seu contexto
+import { useUser } from "../context/UserContext";
+
 const CertificateView = () => {
   const { id } = useParams();
+  const { user } = useUser();
+
+  // ✅ Nome do usuário logado, ou fallback
+  const userName = user?.name?.trim() ? user.name : "Usuário";
 
   return (
     <div className="cert-view-container">
@@ -25,9 +32,16 @@ const CertificateView = () => {
 
         <div className="cert-paper">
           <h1>Certificado</h1>
-          <p>Concedido a <strong>Natanael</strong></p>
+          <p>
+            Concedido a <strong>{userName}</strong>
+          </p>
           <p>Por sua participação e contribuição no evento SEINFO 2025</p>
-          <span className="cert-signature">_______________________<br />Coordenação SEINFO</span>
+
+          <span className="cert-signature">
+            _______________________
+            <br />
+            Coordenação SEINFO
+          </span>
         </div>
       </div>
     </div>
