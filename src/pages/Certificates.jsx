@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Certificates.css";
 
 // ✅ Correção do caminho (dentro de src/)
-import CertificateIllustration from "../assets/illustrations/certificate-art.png";
+import CertificateIllustration from "../assets/illustrations/certificate-art.svg";
 
 // ✅ Hook do seu contexto
 import { useUser } from "../context/UserContext";

@@ -8,6 +8,7 @@ import { ReactComponent as AvailableEventsIcon } from "../assets/icons/Available
 import { ReactComponent as CertificateIcon } from "../assets/icons/Certificate.svg";
 import { ReactComponent as FeedbackIcon } from "../assets/icons/Feedback.svg";
 import { ReactComponent as PanelIcon } from "../assets/icons/Panel.svg"; // ícone para Aprovações
+import { ReactComponent as ApproveIcon } from "../assets/icons/Approve.svg"; // ícone para Aprovações
 import "./Sidebar.css";
 import { useUser } from "../context/UserContext";
 
@@ -33,7 +34,7 @@ export default function Sidebar({ isOpen }) {
         
         <li>
           <Link to="/approve-event">
-            <RequestEventIcon width={20} height={20} />
+            <ApproveIcon width={20} height={20} />
             <span>Aprovar Eventos</span>
           </Link>
         </li>

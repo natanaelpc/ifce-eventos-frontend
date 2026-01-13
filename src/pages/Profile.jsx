@@ -1,11 +1,24 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft, FaPaintBrush } from "react-icons/fa";
 import "./Profile.css";
 
 const Perfil = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="perfil-wrapper">
       {/* Sidebar */}
       <aside className="perfil-sidebar">
+        {/* Botão voltar */}
+        <button
+          className="perfil-back-icon"
+          onClick={() => navigate("/home")}
+          aria-label="Voltar para Home"
+        >
+          <FaArrowLeft />
+        </button>
+
         <h2>Configurações de Conta</h2>
         <ul>
           <li className="active">Informações da conta</li>
@@ -14,7 +27,7 @@ const Perfil = () => {
         </ul>
       </aside>
 
-      {/* Main content */}
+      {/* Conteúdo principal */}
       <main className="perfil-main">
         <h1>Informações da Conta</h1>
 
@@ -25,12 +38,17 @@ const Perfil = () => {
               src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
               alt="Foto de Perfil"
             />
-            <div className="perfil-photo-overlay">
-              <span role="img" aria-label="camera">
-                📷
-              </span>
-            </div>
+
+            {/* Botão editar foto */}
+            <button
+              type="button"
+              className="perfil-photo-edit"
+              aria-label="Editar foto de perfil"
+            >
+              <FaPaintBrush />
+            </button>
           </div>
+
           <p className="perfil-photo-label">Foto de Perfil</p>
         </div>
 
@@ -38,22 +56,17 @@ const Perfil = () => {
         <form className="perfil-form">
           <section>
             <h3>Informações do perfil</h3>
+
             <div className="perfil-field">
               <label>Primeiro nome:</label>
-              <input type="text" placeholder="Enter first name" />
+              <input type="text" placeholder="Digite o primeiro nome" />
             </div>
+
             <div className="perfil-field">
               <label>Sobrenome:</label>
-              <input type="text" placeholder="Enter last name" />
+              <input type="text" placeholder="Digite o sobrenome" />
             </div>
-            <div className="perfil-field">
-              <label>Site:</label>
-              <input type="text" placeholder="Enter website" />
-            </div>
-            <div className="perfil-field">
-              <label>Empresa:</label>
-              <input type="text" placeholder="Enter company name" />
-            </div>
+
           </section>
 
           <section>
@@ -65,24 +78,22 @@ const Perfil = () => {
 
             <div className="perfil-field">
               <label>Número de telefone:</label>
-              <input type="text" placeholder="Enter phone number" />
+              <input type="text" placeholder="Digite o número de telefone" />
             </div>
-            <div className="perfil-field">
-              <label>Endereço:</label>
-              <input type="text" placeholder="Enter address" />
-            </div>
+
             <div className="perfil-field">
               <label>Cidade/Município:</label>
-              <input type="text" placeholder="Enter city" />
+              <input type="text" placeholder="Digite a cidade" />
             </div>
+
             <div className="perfil-field">
               <label>País:</label>
-              <input type="text" placeholder="Enter country" />
+              <input type="text" placeholder="Digite o país" />
             </div>
           </section>
 
           <button type="button" className="perfil-save-btn">
-            Save My Profile
+            Salvar meu perfil
           </button>
         </form>
       </main>
