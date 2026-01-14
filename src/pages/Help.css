@@ -14,37 +14,56 @@
   color: #555;
 }
 
+/* Card */
 .help-card {
   background: #ffffff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  width: 100%;
   max-width: 600px;
+  box-sizing: border-box;
 }
 
 .help-card h2 {
   margin-bottom: 15px;
 }
 
+/* Form */
 .help-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 14px;
 }
 
 .help-form label {
   display: flex;
   flex-direction: column;
-  font-weight: 500;
+  gap: 6px;
+  font-size: 14px;
+  color: #333;
 }
 
+/* >>> isso resolve a “fonte diferente” */
 .help-form input,
 .help-form select,
 .help-form textarea {
-  margin-top: 5px;
+  width: 100%;
+  box-sizing: border-box;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
+
+  font: inherit;
+  color: inherit;
+  background: #fff;
+}
+
+/* >>> isso impede o balão de estourar o layout */
+.help-form textarea {
+  resize: none;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .help-button {
@@ -61,4 +80,3 @@
 .help-button:hover {
   background-color: #552f85;
 }
-
