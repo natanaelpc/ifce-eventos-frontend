@@ -38,6 +38,13 @@ export default function Sidebar({ isOpen }) {
             <span>Aprovar Eventos</span>
           </Link>
         </li>
+        
+        <li>
+          <Link to="/scheduling">
+            <ApproveIcon width={20} height={20} />
+            <span>Agendamentos</span>
+          </Link>
+        </li>
 
         <li>
           <Link to="/events">
