@@ -5,6 +5,7 @@ import Logo from "../assets/logo.png";
 import LogoIf from "../assets/logoif.png";
 import "./Auth.css";
 import { useUser } from "../context/UserContext";
+import api from "../services/APIService";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -13,29 +14,36 @@ function Login() {
   const navigate = useNavigate();
   const { login } = useUser();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setErro("");
 
     if (!email || !senha) {
       setErro("Preencha e-mail e senha.");
       return;
     }
 
-    // Regra de EXEMPLO para papéis:
-    // se o e-mail tiver "admin", considera admin, senão participante
-    const role = email.toLowerCase().includes("admin")
-      ? "admin"
-      : "participantes";
+    try {
+      const res = await api.post("/auth/login", {
+        "email": email,
+        "senha": senha
+      });
 
-    // Aqui entraria o retorno da sua API. Por enquanto, simulando:
-    login({
-      name: email.split("@")[0],
-      email,
-      role, // "admin" ou "participantes"
-    });
+      // token retornado do back
+      const token = res.data;
+      
+      // salva token no localstorage
+      localStorage.setItem("token", token);
 
-    // Redireciona para a Home após login
-    navigate("/home");
+      navigate("/home");
+
+    } catch (err) {
+      if (err.response) {
+        setErro("Email ou senha inválidos.");
+      } else {
+        setErro("Erro ao conectar o servidor");
+      }
+    }  
   };
 
   return (

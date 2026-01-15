@@ -4,33 +4,40 @@ import { createContext, useContext, useEffect, useState } from "react";
 const UserContext = createContext(null);
 
 export function UserProvider({ children }) {
-  // Exemplo de shape: { name, email, role: "admin" | "participantes" }
-  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Carrega do localStorage (para manter logado ao recarregar)
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (err) {
-        console.error("Erro ao ler usuário do localStorage", err);
-      }
+    const storedToken = localStorage.getItem("token");
+
+    if (storedToken) {
+      setToken(storedToken);
+      setIsAuthenticated(true);
     }
   }, []);
 
-  const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
+  const login = (jwtToken) => {
+    localStorage.setItem("token", jwtToken);
+    setToken(jwtToken);
+    setIsAuthenticated(true);
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setToken(null);
+    setIsAuthenticated(false);
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider
+      value={{
+        token,
+        isAuthenticated,
+        login,
+        logout
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
