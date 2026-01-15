@@ -20,12 +20,23 @@ function Home() {
         myEvents.map((event) => (
           <div key={event.id} style={{ marginBottom: "16px" }}>
             <h3>{event.title}</h3>
+
             <p>
               <strong>Data:</strong> {event.date}
             </p>
+
+            <p>
+              <strong>Horário:</strong> {event.startTime} às {event.endTime}
+            </p>
+
+            <p>
+              <strong>Local:</strong> {event.local}
+            </p>
+
             <p>
               <strong>Modalidade:</strong> {event.modality}
             </p>
+
             <span>Status: {event.status}</span>
           </div>
         ))

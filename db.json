@@ -1,23 +1,5 @@
 {
-  "eventos": [
-    {
-      "id": "ccd2",
-      "title": "Palestra",
-      "description": "Para teste",
-      "date": "2025-12-31",
-      "modality": "Presencial",
-      "status": "APROVADO"
-    }
-  ],
-  "inscricoes": [
-    {
-      "id": "4b71",
-      "eventId": "ccd2",
-      "title": "Palestra",
-      "date": "2025-12-31",
-      "modality": "Presencial",
-      "status": "INSCRITO"
-    }
-  ],
+  "eventos": [],
+  "inscricoes": [],
   "agendamentos": []
 }

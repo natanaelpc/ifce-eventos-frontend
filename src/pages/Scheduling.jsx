@@ -10,7 +10,7 @@ function Scheduling() {
     local: "",
     date: "",
     startTime: "",
-    endTime:""
+    endTime: ""
   });
 
   useEffect(() => {
@@ -30,14 +30,40 @@ function Scheduling() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const selectedEvent = events.find(
+      (event) => event.id === formData.eventId
+    );
+
+    if (!selectedEvent) {
+      alert("Evento inválido");
+      return;
+    }
+
+    const newScheduling = {
+      eventId: selectedEvent.id,
+      title: selectedEvent.title,
+      modality: selectedEvent.modality,
+      date: formData.date,
+      startTime: formData.startTime,
+      endTime: formData.endTime,
+      local: formData.local
+    };
+
     try {
       await fetch("http://localhost:3001/agendamentos", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newScheduling)
       });
+
+      await fetch(`http://localhost:3001/eventos/${selectedEvent.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "AGENDADO" })
+      });
+
+      // remove da lista local para evitar novo agendamento
+      setEvents(events.filter(e => e.id !== selectedEvent.id));
 
       alert("Agendamento criado com sucesso!");
       setShowForm(false);
@@ -99,17 +125,17 @@ function Scheduling() {
 
           <div className="form-row">
             <div className="form-group">
-            <label>Data</label>
-            <input
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              required
-            />
-          </div>
+              <label>Data</label>
+              <input
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          <div className="form-group small">
+            <div className="form-group small">
               <label>Hora início</label>
               <input
                 type="time"
