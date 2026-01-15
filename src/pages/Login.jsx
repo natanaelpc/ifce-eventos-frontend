@@ -30,7 +30,7 @@ function Login() {
       });
 
       // token retornado do back
-      const token = res.data;
+      const token = res.data.token;
       
       // salva token no localstorage
       localStorage.setItem("token", token);
