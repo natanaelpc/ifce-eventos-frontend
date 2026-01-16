@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from "../services/APIService";
 import "./ApproveEvents.css";
 
 function ApproveEvents() {
@@ -6,11 +7,8 @@ function ApproveEvents() {
 
   const fetchEvents = async () => {
     try {
-      const res = await fetch(
-        "http://localhost:3001/eventos?status=PENDENTE"
-      );
-      const data = await res.json();
-      setEvents(data);
+      const res = await api.get("/api/evento/pendentes");
+      setEvents(res.data);
     } catch (err) {
       console.error("Erro ao carregar eventos:", err);
     }
@@ -22,12 +20,7 @@ function ApproveEvents() {
 
   const approveEvent = async (id) => {
     try {
-      await fetch(`http://localhost:3001/eventos/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: "APROVADO" })
-      });
-
+      await api.patch(`/api/evento/${id}/aprovar`);
       fetchEvents();
     } catch (err) {
       console.error("Erro ao aprovar evento:", err);
@@ -36,10 +29,7 @@ function ApproveEvents() {
 
   const rejectEvent = async (id) => {
     try {
-      await fetch(`http://localhost:3001/eventos/${id}`, {
-        method: "DELETE"
-      });
-
+      await api.patch(`/api/evento/${id}/recusar`);
       fetchEvents();
     } catch (err) {
       console.error("Erro ao rejeitar evento:", err);

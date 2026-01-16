@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from "../services/APIService";
 import "./Scheduling.css";
 
 function Scheduling() {
@@ -13,11 +14,17 @@ function Scheduling() {
     endTime: ""
   });
 
+  const fetchEvents = async () => {
+    try {
+      const res = await api.get("/api/evento/aprovados");
+      setEvents(res.data);
+    } catch (err) {
+      console.error("Erro ao carregar eventos:", err);
+    }
+  };
+
   useEffect(() => {
-    fetch("http://localhost:3001/eventos?status=APROVADO")
-      .then(res => res.json())
-      .then(data => setEvents(data))
-      .catch(err => console.error("Erro ao carregar eventos:", err));
+    fetchEvents();
   }, []);
 
   const handleChange = (e) => {
@@ -50,19 +57,15 @@ function Scheduling() {
     };
 
     try {
-      await fetch("http://localhost:3001/agendamentos", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newScheduling)
+      // cria agendamento
+      await api.post("/api/agendamento", newScheduling);
+
+      // atualiza status do evento
+      await api.patch(`/eventos/${selectedEvent.id}`, {
+        status: "AGENDADO"
       });
 
-      await fetch(`http://localhost:3001/eventos/${selectedEvent.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: "AGENDADO" })
-      });
-
-      // remove da lista local para evitar novo agendamento
+      // remove da lista local
       setEvents(events.filter(e => e.id !== selectedEvent.id));
 
       alert("Agendamento criado com sucesso!");
@@ -75,7 +78,7 @@ function Scheduling() {
         endTime: ""
       });
     } catch (err) {
-      console.error(err);
+      console.error("Erro ao criar agendamento:", err);
       alert("Erro ao criar agendamento");
     }
   };

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import api from "../services/APIService";
 import "./RequestEvent.css";
 
 function RequestEvent() {
@@ -27,17 +28,7 @@ function RequestEvent() {
     };
 
     try {
-      const response = await fetch("http://localhost:3001/eventos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newEvent)
-      });
-
-      if (!response.ok) {
-        throw new Error("Erro ao criar evento");
-      }
+      await api.post("/evento", newEvent);
 
       // limpa formulário
       e.target.reset();

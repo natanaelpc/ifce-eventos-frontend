@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from "../services/APIService";
 import "./Events.css";
 
 function Eventos() {
@@ -6,9 +7,8 @@ function Eventos() {
 
   const fetchAgendamentos = async () => {
     try {
-      const res = await fetch("http://localhost:3001/agendamentos");
-      const data = await res.json();
-      setAgendamentos(data);
+      const res = await api.get("/api/agendamento");
+      setAgendamentos(res.data);
     } catch (err) {
       console.error("Erro ao carregar eventos:", err);
     }
@@ -21,29 +21,24 @@ function Eventos() {
   const handleSubscribe = async (agendamento) => {
     try {
       const inscricao = {
-        eventId: agendamento.eventId,
-        title: agendamento.title,
-        date: agendamento.date,
-        modality: agendamento.modality,
-        startTime: agendamento.startTime,
-        endTime: agendamento.endTime,
-        local: agendamento.local,
-        status: "INSCRITO"
+        agendamentoId: agendamento.id
+        // eventId: agendamento.eventId,
+        // title: agendamento.title,
+        // date: agendamento.date,
+        // modality: agendamento.modality,
+        // startTime: agendamento.startTime,
+        // endTime: agendamento.endTime,
+        // local: agendamento.local,
+        // status: "INSCRITO"
       };
 
       // cria inscrição
-      await fetch("http://localhost:3001/inscricoes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(inscricao)
-      });
+      await api.post("/api/inscricao", inscricao);
 
-      // remove evento disponível
-      await fetch(`http://localhost:3001/agendamentos/${agendamento.id}`, {
-        method: "DELETE"
-      });
+      // remove agendamento disponível
+      await api.delete(`/agendamentos/${agendamento.id}`);
 
-      // atualiza lista
+      // atualiza lista local
       setAgendamentos(
         agendamentos.filter(a => a.id !== agendamento.id)
       );
@@ -73,7 +68,8 @@ function Eventos() {
                 </p>
 
                 <p className="card-info">
-                  <strong>Horário:</strong> {agendamento.startTime} às {agendamento.endTime}
+                  <strong>Horário:</strong>{" "}
+                  {agendamento.startTime} às {agendamento.endTime}
                 </p>
 
                 <p className="card-info">

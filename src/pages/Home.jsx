@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
+import api from "../services/APIService";
 
 function Home() {
   const [myEvents, setMyEvents] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/inscricoes")
-      .then((res) => res.json())
-      .then((data) => setMyEvents(data))
-      .catch((err) => console.error("Erro ao carregar inscrições:", err));
+    const fetchMyEvents = async () => {
+      try {
+        const res = await api.get("/api/usuario/me/agendamentos");
+        setMyEvents(res.data);
+      } catch (err) {
+        console.error("Erro ao carregar inscrições:", err);
+      }
+    };
+
+    fetchMyEvents();
   }, []);
 
   return (
