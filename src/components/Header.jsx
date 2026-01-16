@@ -2,9 +2,9 @@
 import { Link } from 'react-router-dom';
 import './Header.css';
 import { ReactComponent as PanelIcon } from "../assets/icons/Panel.svg";
-import { ReactComponent as NotificationsIcon } from "../assets/icons/Notifications.svg";
-import { ReactComponent as HelpIcon } from "../assets/icons/Help.svg";
-import { ReactComponent as SettingsIcon } from "../assets/icons/Settings.svg";
+//import { ReactComponent as NotificationsIcon } from "../assets/icons/Notifications.svg";
+//import { ReactComponent as HelpIcon } from "../assets/icons/Help.svg";
+//import { ReactComponent as SettingsIcon } from "../assets/icons/Settings.svg";
 import { ReactComponent as ProfileIcon } from "../assets/icons/Profile.svg";
 
 function Header({ toggleSidebar }) {
@@ -17,9 +17,6 @@ function Header({ toggleSidebar }) {
 
       <nav>
         <ul className="nav-list">
-          <li><Link to="/notifications"><NotificationsIcon width={20} height={20} /></Link></li>
-          <li><Link to="/help"><HelpIcon width={20} height={20} /></Link></li>
-          <li><Link to="/settings"><SettingsIcon width={20} height={20} /></Link></li>
           <li><Link to="/profile"><ProfileIcon width={20} height={20} /></Link></li>
         </ul>
       </nav>

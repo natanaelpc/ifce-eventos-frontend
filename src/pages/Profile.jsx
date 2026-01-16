@@ -20,16 +20,10 @@ const Perfil = () => {
         </button>
 
         <h2>Configurações de Conta</h2>
-        <ul>
-          <li className="active">Informações da conta</li>
-          <li>Alterar e-mail</li>
-          <li>Senha</li>
-        </ul>
       </aside>
 
       {/* Conteúdo principal */}
       <main className="perfil-main">
-        <h1>Informações da Conta</h1>
 
         {/* Foto de perfil */}
         <div className="perfil-photo-section">
