@@ -70,10 +70,6 @@ function App() {
           <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}> <CertificateView /> </Layout>
         } />
 
-
-
-
-
       </Routes>
 
     </Router>
