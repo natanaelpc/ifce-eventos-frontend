@@ -19,16 +19,16 @@ function RequestEvent() {
 
     const formData = new FormData(e.target);
 
+    // criação do evento para ser enviado para o back
     const newEvent = {
-      title: formData.get("title"),
-      description: formData.get("description"),
-      date: formData.get("date"),
-      modality: selectedModality,
-      status: "PENDENTE"
+      titulo: formData.get("title"),
+      descricao: formData.get("description"),
+      remote: formData.get("remote"),
+      dataPrevista: formData.get("date"),
     };
 
     try {
-      await api.post("/evento", newEvent);
+      await api.post("/api/evento", newEvent);
 
       // limpa formulário
       e.target.reset();
