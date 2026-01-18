@@ -7,12 +7,21 @@ function Eventos() {
 
   const fetchAgendamentos = async () => {
     try {
-      const res = await api.get("/api/agendamento");
+      const res = await api.get("/api/agendamento/listar");
       setAgendamentos(res.data);
     } catch (err) {
       console.error("Erro ao carregar eventos:", err);
     }
   };
+
+  // função que recebe um Evento com suas infos
+  const receberInfosDeEvento = async () => {
+    try {
+      const eventoRes = await api.get(`/api/evento/${agendamento.id}`);
+    } catch (err) {
+      console.error("Erro ao retornar informações.")
+    }
+  }
 
   useEffect(() => {
     fetchAgendamentos();
@@ -20,17 +29,7 @@ function Eventos() {
 
   const handleSubscribe = async (agendamento) => {
     try {
-      const inscricao = {
-        agendamentoId: agendamento.id
-        // eventId: agendamento.eventId,
-        // title: agendamento.title,
-        // date: agendamento.date,
-        // modality: agendamento.modality,
-        // startTime: agendamento.startTime,
-        // endTime: agendamento.endTime,
-        // local: agendamento.local,
-        // status: "INSCRITO"
-      };
+      const inscricao = { agendamentoId: agendamento.id };
 
       // cria inscrição
       await api.post("/api/inscricao", inscricao);
@@ -64,12 +63,12 @@ function Eventos() {
                 <h3 className="card-title">{agendamento.title}</h3>
 
                 <p className="card-info">
-                  <strong>Data:</strong> {agendamento.date}
+                  <strong>Data:</strong> {agendamento.data}
                 </p>
 
                 <p className="card-info">
                   <strong>Horário:</strong>{" "}
-                  {agendamento.startTime} às {agendamento.endTime}
+                  {agendamento.horaInicio} às {agendamento.horaFim}
                 </p>
 
                 <p className="card-info">
