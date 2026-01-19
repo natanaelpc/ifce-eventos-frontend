@@ -5,23 +5,30 @@ import "./Events.css";
 function Eventos() {
   const [agendamentos, setAgendamentos] = useState([]);
 
+  // retorna todos os agendamentos que ainda vão acontecer
   const fetchAgendamentos = async () => {
     try {
       const res = await api.get("/api/agendamento/listar");
-      setAgendamentos(res.data);
+
+      const agendamentosComInfos = await Promise.all(
+        res.data.map(async (agendamento) => {
+          const eventoInfos = await api.get(`/api/avento/${agendamento.idEvento}`)
+          const LugarInfos = await api.get(`/api/lugar/${agendamento.idLugar}`)
+
+          return {
+            ...agendamento,
+            tituloEvento: eventoInfos.data.titulo,
+            modalidade: eventoInfos.data.remote,
+            nomeLugar: lugarRes.data.nome
+          };
+        })
+      );
+
+      setAgendamentos(agendamentosComInfos);
     } catch (err) {
       console.error("Erro ao carregar eventos:", err);
     }
   };
-
-  // função que recebe um Evento com suas infos
-  const receberInfosDeEvento = async () => {
-    try {
-      const eventoRes = await api.get(`/api/evento/${agendamento.id}`);
-    } catch (err) {
-      console.error("Erro ao retornar informações.")
-    }
-  }
 
   useEffect(() => {
     fetchAgendamentos();
@@ -35,7 +42,7 @@ function Eventos() {
       await api.post("/api/inscricao", inscricao);
 
       // remove agendamento disponível
-      await api.delete(`/agendamentos/${agendamento.id}`);
+      //await api.delete(`/agendamentos/${agendamento.id}`);
 
       // atualiza lista local
       setAgendamentos(
@@ -60,7 +67,7 @@ function Eventos() {
           agendamentos.map((agendamento) => (
             <div key={agendamento.id} className="event-card">
               <div className="card-content">
-                <h3 className="card-title">{agendamento.title}</h3>
+                <h3 className="card-title">{agendamento.tituloEvento}</h3>
 
                 <p className="card-info">
                   <strong>Data:</strong> {agendamento.data}
@@ -72,11 +79,13 @@ function Eventos() {
                 </p>
 
                 <p className="card-info">
-                  <strong>Local:</strong> {agendamento.local}
+                  // local.nome
+                  <strong>Local:</strong> {agendamento.nomeLugar}
                 </p>
 
                 <p className="card-info">
-                  <strong>Modalidade:</strong> {agendamento.modality}
+                  // evento.remote
+                  <strong>Modalidade:</strong> {agendamento.modalidade}
                 </p>
 
                 <div className="card-footer">

@@ -2,48 +2,52 @@ import { useEffect, useState } from "react";
 import api from "../services/APIService";
 
 function Home() {
-  const [myEvents, setMyEvents] = useState([]);
+  const [meusAgendamentos, setMeusAgendamentos] = useState([]);
 
   useEffect(() => {
-    const fetchMyEvents = async () => {
+    const fetchMeusAgendamentos = async () => {
       try {
         const res = await api.get("/api/usuario/me/agendamentos");
-        setMyEvents(res.data);
+        fetchMeusAgendamentos(res.data);
       } catch (err) {
         console.error("Erro ao carregar inscrições:", err);
       }
     };
 
-    fetchMyEvents();
+    fetchMeusAgendamentos();
   }, []);
 
   return (
     <div>
       <h1>Meus Eventos</h1>
 
-      {myEvents.length === 0 ? (
-        <p>Você ainda não se inscreveu em nenhum evento.</p>
+      {meusAgendamentos.length === 0 ? (
+        <p>Você ainda não se inscreveu em nenhum agendamento de evento.</p>
       ) : (
-        myEvents.map((event) => (
-          <div key={event.id} style={{ marginBottom: "16px" }}>
+        meusAgendamentos.map((agendamento) => (
+          <div key={agendamento.id} style={{ marginBottom: "16px" }}>
+            {/* puxar titulo do evento do agendamento */}
             <h3>{event.title}</h3>
 
             <p>
-              <strong>Data:</strong> {event.date}
+              <strong>Data:</strong> {agendamento.data}
             </p>
 
             <p>
-              <strong>Horário:</strong> {event.startTime} às {event.endTime}
+              <strong>Horário:</strong> {agendamento.horaInicio} às {agendamento.horaFim}
             </p>
 
             <p>
+              {/* puxar local pelo agendamento */}
               <strong>Local:</strong> {event.local}
             </p>
 
             <p>
+              {/* puxar do evento */}
               <strong>Modalidade:</strong> {event.modality}
             </p>
-
+            
+            {/* puxar do evento */}
             <span>Status: {event.status}</span>
           </div>
         ))

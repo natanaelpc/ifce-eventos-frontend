@@ -46,20 +46,21 @@ function ApproveEvents() {
         ) : (
           events.map((event) => (
             <div key={event.id} className="approve-card">
-              <h3>{event.title}</h3>
+              <h3>{event.titulo}</h3>
 
               <p>
-                <strong>Data:</strong> {event.date}
+                <strong>Data:</strong> {event.dataPrevista}
               </p>
 
               <p>
-                <strong>Modalidade:</strong> {event.modality}
+                <strong>Modalidade:</strong> {event.remote}
               </p>
 
-              <p className="approve-desc">{event.description}</p>
+              <p className="approve-desc">{event.descricao}</p>
 
               <div className="approve-actions">
                 <button
+                // botão para aprovar evento
                   onClick={() => approveEvent(event.id)}
                   className="approve-btn approve-btn-yes"
                 >
@@ -67,6 +68,7 @@ function ApproveEvents() {
                 </button>
 
                 <button
+                // botão para rejeitar evento
                   onClick={() => rejectEvent(event.id)}
                   className="approve-btn approve-btn-no"
                 >
