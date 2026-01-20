@@ -1,52 +1,49 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import api from "../services/APIService";
 import "./Events.css";
 
 function Eventos() {
   const [agendamentos, setAgendamentos] = useState([]);
+  const jaBuscou = useRef(false);
 
   // retorna todos os agendamentos que ainda vão acontecer
   const fetchAgendamentos = async () => {
     try {
       const res = await api.get("/api/agendamento/listar");
+      setAgendamentos = res.data;
 
-      const agendamentosComInfos = await Promise.all(
-        res.data.map(async (agendamento) => {
-          const eventoInfos = await api.get(`/api/avento/${agendamento.idEvento}`)
-          const LugarInfos = await api.get(`/api/lugar/${agendamento.idLugar}`)
+      // const agendamentosComInfos = await Promise.all(
+      //   res.data.map(async (agendamento) => {
+      //     const eventoInfos = await api.get(`/api/avento/${agendamento.idEvento}`)
+      //     const LugarInfos = await api.get(`/api/lugar/${agendamento.idLugar}`)
 
-          return {
-            ...agendamento,
-            tituloEvento: eventoInfos.data.titulo,
-            modalidade: eventoInfos.data.remote,
-            nomeLugar: lugarRes.data.nome
-          };
-        })
-      );
+      //     return {
+      //       ...agendamento,
+      //       tituloEvento: eventoInfos.data.titulo,
+      //       modalidade: eventoInfos.data.remote,
+      //       nomeLugar: LugarInfos.data.nome
+      //     };
+      //   })
+      // );
 
-      setAgendamentos(agendamentosComInfos);
     } catch (err) {
       console.error("Erro ao carregar eventos:", err);
     }
   };
 
   useEffect(() => {
+    if (jaBuscou.current) return;
+    jaBuscou.current = true;
+
     fetchAgendamentos();
   }, []);
 
   const handleSubscribe = async (agendamento) => {
     try {
-      const inscricao = { agendamentoId: agendamento.id };
+      await api.post("/api/inscricao", { agendamentoId: agendamento.id });
 
-      // cria inscrição
-      await api.post("/api/inscricao", inscricao);
-
-      // remove agendamento disponível
-      //await api.delete(`/agendamentos/${agendamento.id}`);
-
-      // atualiza lista local
-      setAgendamentos(
-        agendamentos.filter(a => a.id !== agendamento.id)
+      setAgendamentos(prev => 
+        prev.filter(a => a.id !== agendamento.id)
       );
 
       alert("Inscrição realizada com sucesso!");
@@ -56,7 +53,7 @@ function Eventos() {
     }
   };
 
-  return (
+   return (
     <div className="eventos-page">
       <h2 className="eventos-title">Eventos Disponíveis</h2>
 
@@ -64,10 +61,12 @@ function Eventos() {
         {agendamentos.length === 0 ? (
           <p>Nenhum evento disponível.</p>
         ) : (
-          agendamentos.map((agendamento) => (
+          agendamentos.map(agendamento => (
             <div key={agendamento.id} className="event-card">
               <div className="card-content">
-                <h3 className="card-title">{agendamento.tituloEvento}</h3>
+                <h3 className="card-title">
+                  {agendamento.evento.titulo}
+                </h3>
 
                 <p className="card-info">
                   <strong>Data:</strong> {agendamento.data}
@@ -79,13 +78,13 @@ function Eventos() {
                 </p>
 
                 <p className="card-info">
-                  // local.nome
-                  <strong>Local:</strong> {agendamento.nomeLugar}
+                  <strong>Local:</strong>{" "}
+                  {agendamento.lugar.nome}
                 </p>
 
                 <p className="card-info">
-                  // evento.remote
-                  <strong>Modalidade:</strong> {agendamento.modalidade}
+                  <strong>Modalidade:</strong>{" "}
+                  {agendamento.evento.remote ? "Remoto" : "Presencial"}
                 </p>
 
                 <div className="card-footer">

@@ -27,7 +27,7 @@ function Home() {
         meusAgendamentos.map((agendamento) => (
           <div key={agendamento.id} style={{ marginBottom: "16px" }}>
             {/* puxar titulo do evento do agendamento */}
-            <h3>{event.title}</h3>
+            <h3>{agendamento.title}</h3>
 
             <p>
               <strong>Data:</strong> {agendamento.data}
@@ -39,16 +39,16 @@ function Home() {
 
             <p>
               {/* puxar local pelo agendamento */}
-              <strong>Local:</strong> {event.local}
+              <strong>Local:</strong> {agendamento.local}
             </p>
 
             <p>
               {/* puxar do evento */}
-              <strong>Modalidade:</strong> {event.modality}
+              <strong>Modalidade:</strong> {agendamento.modality}
             </p>
             
             {/* puxar do evento */}
-            <span>Status: {event.status}</span>
+            <span>Status: {agendamento.status}</span>
           </div>
         ))
       )}
