@@ -35,6 +35,8 @@ function Login() {
       // salva token no localstorage
       localStorage.setItem("token", token);
 
+      login(token);
+
       navigate("/home");
 
     } catch (err) {

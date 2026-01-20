@@ -1,19 +1,16 @@
-// src/components/Sidebar.jsx
 import { Link } from "react-router-dom";
 import { ReactComponent as UserIcon } from "../assets/icons/User.svg";
 import { ReactComponent as RequestEventIcon } from "../assets/icons/RequestEvent.svg";
 import { ReactComponent as AvailableEventsIcon } from "../assets/icons/AvailableEvents.svg";
-// import { ReactComponent as DoubtsIcon } from "../assets/icons/Doubts.svg"; // removido
-// import { ReactComponent as FiltersIcon } from "../assets/icons/Filters.svg"; // removido
 import { ReactComponent as CertificateIcon } from "../assets/icons/Certificate.svg";
 import { ReactComponent as FeedbackIcon } from "../assets/icons/Feedback.svg";
-import { ReactComponent as PanelIcon } from "../assets/icons/Panel.svg"; // ícone para Aprovações
-import { ReactComponent as ApproveIcon } from "../assets/icons/Approve.svg"; // ícone para Aprovações
+import { ReactComponent as PanelIcon } from "../assets/icons/Panel.svg";
+import { ReactComponent as ApproveIcon } from "../assets/icons/Approve.svg";
 import "./Sidebar.css";
 import { useUser } from "../context/UserContext";
 
 export default function Sidebar({ isOpen }) {
-  const { user } = useUser();
+  const { userType } = useUser(); 
 
   return (
     <aside className={`sidebar ${isOpen ? "open" : "closed"}`}>
@@ -25,45 +22,48 @@ export default function Sidebar({ isOpen }) {
           </Link>
         </li>
 
-        <li>
-          <Link to="/request-event">
-            <RequestEventIcon width={20} height={20} />
-            <span>Solicitar Evento</span>
-          </Link>
-        </li>
-        
-        <li>
-          <Link to="/approve-event">
-            <ApproveIcon width={20} height={20} />
-            <span>Aprovar Eventos</span>
-          </Link>
-        </li>
-        
-        <li>
-          <Link to="/scheduling">
-            <ApproveIcon width={20} height={20} />
-            <span>Agendamentos</span>
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/events">
-            <AvailableEventsIcon width={20} height={20} />
-            <span>Eventos Disponíveis</span>
-          </Link>
-        </li>
-
-        {/* Card "Aprovações" visível apenas para admin */}
-        {user?.role === "admin" && (
+        {/* Professor e Admin */}
+        {(userType === "PROFESSOR" || userType === "ADMIN") && (
           <li>
-            <Link to="/approvals">
-              <PanelIcon width={20} height={20} />
-              <span>Aprovações</span>
+            <Link to="/request-event">
+              <RequestEventIcon width={20} height={20} />
+              <span>Solicitar Evento</span>
             </Link>
           </li>
         )}
 
-        {/* Dúvidas e Filtros REMOVIDOS */}
+        {/* Apenas Admin */}
+        {userType === "ADMIN" && (
+          <>
+            <li>
+              <Link to="/approve-event">
+                <ApproveIcon width={20} height={20} />
+                <span>Aprovar Eventos</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/scheduling">
+                <ApproveIcon width={20} height={20} />
+                <span>Agendamentos</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/approvals">
+                <PanelIcon width={20} height={20} />
+                <span>Aprovações</span>
+              </Link>
+            </li>
+          </>
+        )}
+
+        <li>
+          <Link to="/events">
+            <AvailableEventsIcon width={20} height={20} />
+            <span>Agendamentos Disponíveis</span>
+          </Link>
+        </li>
 
         <li>
           <Link to="/certificates">
@@ -73,7 +73,6 @@ export default function Sidebar({ isOpen }) {
         </li>
       </ul>
 
-      {/* Card de ajuda/feedback que você comentou que já fica abaixo da sidebar */}
       <div className="sidebar-footer">
         <div className="footer-divider"></div>
         <Link to="/help-feedback" className="sidebar-footer-link">
