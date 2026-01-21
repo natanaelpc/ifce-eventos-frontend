@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaPaintBrush } from "react-icons/fa";
 import "./Profile.css";
@@ -6,11 +6,44 @@ import "./Profile.css";
 const Perfil = () => {
   const navigate = useNavigate();
 
+  const [nome, setNome] = useState("Usuário");
+  const [email, setEmail] = useState("Email");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    const fetchUsuario = async () => {
+      try {
+        const response = await fetch("/api/usuario", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Erro ao buscar dados do usuário");
+        }
+
+        const data = await response.json();
+
+        setNome(data.nome || "Usuário");
+        setEmail(data.email || "Email");
+      } catch (error) {
+        console.error("Erro ao carregar perfil:", error);
+      }
+    };
+
+    fetchUsuario();
+  }, []);
+
   return (
     <div className="perfil-wrapper">
       {/* Sidebar */}
       <aside className="perfil-sidebar">
-        {/* Botão voltar */}
         <button
           className="perfil-back-icon"
           onClick={() => navigate("/home")}
@@ -24,7 +57,6 @@ const Perfil = () => {
 
       {/* Conteúdo principal */}
       <main className="perfil-main">
-
         {/* Foto de perfil */}
         <div className="perfil-photo-section">
           <div className="perfil-photo">
@@ -33,7 +65,6 @@ const Perfil = () => {
               alt="Foto de Perfil"
             />
 
-            {/* Botão editar foto */}
             <button
               type="button"
               className="perfil-photo-edit"
@@ -52,15 +83,14 @@ const Perfil = () => {
             <h3>Informações do perfil</h3>
 
             <div className="perfil-field">
-              <label>Primeiro nome:</label>
-              <input type="text" placeholder="Digite o primeiro nome" />
+              <label>Nome:</label>
+              <input
+                type="text"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                placeholder="Digite seu nome"
+              />
             </div>
-
-            <div className="perfil-field">
-              <label>Sobrenome:</label>
-              <input type="text" placeholder="Digite o sobrenome" />
-            </div>
-
           </section>
 
           <section>
@@ -71,8 +101,13 @@ const Perfil = () => {
             </p>
 
             <div className="perfil-field">
-              <label>Número de telefone:</label>
-              <input type="text" placeholder="Digite o número de telefone" />
+              <label>Email:</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Digite seu email"
+              />
             </div>
 
             <div className="perfil-field">

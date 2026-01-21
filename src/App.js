@@ -13,6 +13,7 @@ import Certificates from "./pages/Certificates";
 import Help from "./pages/Help";
 import Profile from "./pages/Profile";
 import CertificateView from "./pages/CertificateView";
+import RegisterProfessor from "./pages/RegisterProfessor";
 
 import Layout from "./components/Layout";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -67,6 +68,15 @@ function App() {
               <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}>
                 <Events />
               </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/register-professor"
+          element={
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
+                <RegisterProfessor />
             </ProtectedRoute>
           }
         />

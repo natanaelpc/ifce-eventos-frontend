@@ -45,6 +45,13 @@ export default function Sidebar({ isOpen }) {
                 <span>Criar Agendamentos</span>
               </Link>
             </li>
+            
+            <li>
+              <Link to="/register-professor">
+                <ApproveIcon width={20} height={20} />
+                <span>Cadastrar Professor</span>
+              </Link>
+            </li>
           </>
         )}
 
