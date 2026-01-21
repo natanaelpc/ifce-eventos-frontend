@@ -37,7 +37,7 @@ function App() {
 
         {/* rotas privadas */}
 
-        {/* Home */}
+        {/* home */}
         <Route
           path="/home"
           element={
@@ -49,14 +49,12 @@ function App() {
           }
         />
 
-        {/* erfil */}
+        {/* perfil */}
         <Route
           path="/profile"
           element={
             <ProtectedRoute>
-              <Layout isOpen={isOpen} toggleSidebar={toggleSidebar}>
                 <Profile />
-              </Layout>
             </ProtectedRoute>
           }
         />
