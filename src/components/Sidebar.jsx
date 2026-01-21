@@ -4,13 +4,12 @@ import { ReactComponent as RequestEventIcon } from "../assets/icons/RequestEvent
 import { ReactComponent as AvailableEventsIcon } from "../assets/icons/AvailableEvents.svg";
 import { ReactComponent as CertificateIcon } from "../assets/icons/Certificate.svg";
 import { ReactComponent as FeedbackIcon } from "../assets/icons/Feedback.svg";
-import { ReactComponent as PanelIcon } from "../assets/icons/Panel.svg";
 import { ReactComponent as ApproveIcon } from "../assets/icons/Approve.svg";
 import "./Sidebar.css";
 import { useUser } from "../context/UserContext";
 
 export default function Sidebar({ isOpen }) {
-  const { userType } = useUser(); 
+  const { userType } = useUser();
 
   return (
     <aside className={`sidebar ${isOpen ? "open" : "closed"}`}>
@@ -22,7 +21,6 @@ export default function Sidebar({ isOpen }) {
           </Link>
         </li>
 
-        {/* Professor e Admin */}
         {(userType === "PROFESSOR" || userType === "ADMIN") && (
           <li>
             <Link to="/request-event">
@@ -32,7 +30,6 @@ export default function Sidebar({ isOpen }) {
           </li>
         )}
 
-        {/* Apenas Admin */}
         {userType === "ADMIN" && (
           <>
             <li>
@@ -45,14 +42,7 @@ export default function Sidebar({ isOpen }) {
             <li>
               <Link to="/scheduling">
                 <ApproveIcon width={20} height={20} />
-                <span>Agendamentos</span>
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/approvals">
-                <PanelIcon width={20} height={20} />
-                <span>Aprovações</span>
+                <span>Criar Agendamentos</span>
               </Link>
             </li>
           </>
@@ -73,12 +63,15 @@ export default function Sidebar({ isOpen }) {
         </li>
       </ul>
 
+      {/* Footer */}
       <div className="sidebar-footer">
         <div className="footer-divider"></div>
+
         <Link to="/help-feedback" className="sidebar-footer-link">
           <FeedbackIcon width={16} height={16} />
           <span>Ajuda e Feedback</span>
         </Link>
+        
       </div>
     </aside>
   );
