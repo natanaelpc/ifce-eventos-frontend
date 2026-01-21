@@ -117,13 +117,13 @@ button:active {
   transform: scale(0.98);
 }
 
-.btn-primary {
+.btn-primary-auth {
   background-color: #07635D;
   color: #fff;
   margin-top: 10px;
 }
 
-.btn-primary:hover {
+.btn-primary-auth:hover {
   background-color: #006ae1;
 }
 

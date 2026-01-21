@@ -86,7 +86,7 @@ function Login() {
 
           {erro && <p className="auth-error">{erro}</p>}
 
-          <button type="submit" className="btn-primary">
+          <button type="submit" className="btn-primary-auth">
             Entrar
           </button>
         </form>

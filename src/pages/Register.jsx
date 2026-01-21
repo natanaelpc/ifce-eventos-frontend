@@ -101,12 +101,8 @@ function Register() {
           />
         </div>
 
-          <button type="submit" className="btn-primary">
+          <button type="submit" className="btn-primary-auth">
             Criar Conta
-          </button>
-
-          <button type="button" className="btn-google">
-            Continuar com o Google
           </button>
         </form>
         
