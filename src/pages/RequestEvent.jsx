@@ -19,18 +19,19 @@ function RequestEvent() {
 
     const formData = new FormData(e.target);
 
-    // criação do evento para ser enviado para o back
+    // converte modalidade em boolean
+    const isRemote = selectedModality === "Remota";
+
     const newEvent = {
       titulo: formData.get("title"),
       descricao: formData.get("description"),
-      remote: formData.get("remote"),
+      remote: isRemote,
       dataPrevista: formData.get("date"),
     };
 
     try {
       await api.post("/api/evento", newEvent);
 
-      // limpa formulário
       e.target.reset();
       setSelectedModality(null);
 
@@ -72,7 +73,7 @@ function RequestEvent() {
 
         <div className="form-row">
           <div className="form-group full">
-            <label htmlFor="modality">Modalidade</label>
+            <label>Modalidade</label>
             <div className="category-list">
               {["Presencial", "Remota"].map((mod) => (
                 <button
