@@ -1,7 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import "./Auth.css";
 import LogoIf from '../assets/logoif.png';
-import { useUser } from "../context/UserContext";
 import api from "../services/APIService";
 import { useState } from 'react';
 
@@ -35,6 +34,7 @@ function Register() {
         "nome": nome
       });
 
+      alert('Usuário cadastrado com sucesso!')
       navigate("/login");
 
     } catch (err) {
