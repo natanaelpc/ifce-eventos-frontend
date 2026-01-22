@@ -2,43 +2,48 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaPaintBrush } from "react-icons/fa";
 import "./Profile.css";
+import api from "../services/APIService";
 
 const Perfil = () => {
   const navigate = useNavigate();
 
-  const [nome, setNome] = useState("Usuário");
-  const [email, setEmail] = useState("Email");
+  const [usuario, setUsuario] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (!token) return;
-
     const fetchUsuario = async () => {
       try {
-        const response = await fetch("/api/usuario", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        setLoading(true);
 
-        if (!response.ok) {
-          throw new Error("Erro ao buscar dados do usuário");
-        }
+        const res = await api.get("/api/usuario");
 
-        const data = await response.json();
-
-        setNome(data.nome || "Usuário");
-        setEmail(data.email || "Email");
+        setUsuario(res.data);
       } catch (error) {
         console.error("Erro ao carregar perfil:", error);
+        alert("Não foi possível carregar os dados do usuário.");
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchUsuario();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="perfil-wrapper">
+        <p>Carregando perfil...</p>
+      </div>
+    );
+  }
+
+  if (!usuario) {
+    return (
+      <div className="perfil-wrapper">
+        <p>Usuário não encontrado.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="perfil-wrapper">
@@ -52,7 +57,7 @@ const Perfil = () => {
           <FaArrowLeft />
         </button>
 
-        <h2>Configurações de Conta</h2>
+        <h2>Informações de Conta</h2>
       </aside>
 
       {/* Conteúdo principal */}
@@ -84,46 +89,20 @@ const Perfil = () => {
 
             <div className="perfil-field">
               <label>Nome:</label>
-              <input
-                type="text"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                placeholder="Digite seu nome"
-              />
+              <input type="text" value={usuario.nome || ""} disabled />
             </div>
-          </section>
-
-          <section>
-            <h3>Informações para Contato</h3>
-            <p className="perfil-note">
-              Esses dados são privados e serão usados apenas para entrarmos em
-              contato com você para fins de emissão de ingressos ou premiações.
-            </p>
 
             <div className="perfil-field">
               <label>Email:</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Digite seu email"
-              />
+              <input type="email" value={usuario.email || ""} disabled />
             </div>
 
             <div className="perfil-field">
-              <label>Cidade/Município:</label>
-              <input type="text" placeholder="Digite a cidade" />
-            </div>
-
-            <div className="perfil-field">
-              <label>País:</label>
-              <input type="text" placeholder="Digite o país" />
+              <label>Tipo de usuário:</label>
+              <input type="text" value={usuario.tipoUsuario || ""} disabled />
             </div>
           </section>
 
-          <button type="button" className="perfil-save-btn">
-            Salvar meu perfil
-          </button>
         </form>
       </main>
     </div>
