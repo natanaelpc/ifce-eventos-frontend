@@ -4,14 +4,13 @@
   margin-bottom: 25px;
 }
 
-/* GRID COM 3 COLUNAS */
+/* grid de eventos */
 .event-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(260px, 1fr));
   gap: 20px;
 }
 
-/* CARD BASE */
 .event-card {
   background: #ffffff;
   padding: 20px;
@@ -23,7 +22,6 @@
   overflow: hidden;
 }
 
-/* BARRA DEGRADÊ LATERAL */
 .event-card::before {
   content: "";
   position: absolute;
@@ -46,42 +44,36 @@
   flex-direction: column;
 }
 
-/* TÍTULO */
 .card-title {
   margin: 0;
   font-size: 20px;
   font-weight: 600;
 }
 
-/* AUTOR */
 .card-author {
   font-size: 14px;
   color: #444;
   margin-bottom: 10px;
 }
 
-/* DESCRIÇÃO */
 .desc {
   margin: 10px 0 15px 0;
   color: #555;
   font-size: 14px;
 }
 
-/* INFO (DATA E MODALIDADE) */
 .card-info {
   font-size: 14px;
   margin: 3px 0;
   color: #555;
 }
 
-/* BOTÃO ALINHADO À DIREITA */
 .card-footer {
   margin-top: auto;
   display: flex;
   justify-content: flex-end;
 }
 
-/* BOTÃO */
 .btn-subscribe {
   padding: 10px 16px;
   background-color: #07635D;

@@ -7,9 +7,9 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #dfdfdf;
-  height: 60px;              /* altura fixa para referência da sidebar */
-  box-sizing: border-box;    /* garante que padding não aumente altura */
-  z-index: 1000;             /* garante que fique acima da sidebar */
+  height: 60px;
+  box-sizing: border-box;
+  z-index: 1000;
 }
 
 .logo {
@@ -68,6 +68,6 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999; /* aparece acima da sidebar */
-  background: #ffffff; /* mantém o fundo igual ao já existente */
+  z-index: 999;
+  background: #ffffff;
 }

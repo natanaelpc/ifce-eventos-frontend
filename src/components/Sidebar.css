@@ -84,24 +84,22 @@
   padding: 20px 20px;
 }
 
-/* ===== RESPONSIVIDADE DA SIDEBAR ===== */
+/* RESPONSIVIDADE DA SIDEBAR */
 
-/* notebooks / tablets deitados */
+/* telas médias */
 @media (max-width: 1024px) {
   .sidebar {
     width: 260px;
   }
 }
 
-/* telas menores (tablet em pé / celular) */
+/* telas menores */
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
     left: 0;
-    top: 60px; /* mesma altura do header */
+    top: 60px;
     height: calc(100vh - 60px);
     z-index: 900;
-    /* você já controla abrir/fechar pelo isOpen no React,
-       então aqui só garantimos que ela fique por cima */
   }
 }

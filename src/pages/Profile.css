@@ -6,7 +6,6 @@
   color: #333;
 }
 
-/* ===== Sidebar ===== */
 .perfil-sidebar {
   width: 250px;
   background-color: #f5f5f5;
@@ -41,7 +40,6 @@
   color: #000;
 }
 
-/* ===== Main content ===== */
 .perfil-main {
   flex: 1;
   padding: 60px 80px;
@@ -55,7 +53,6 @@
   padding-bottom: 10px;
 }
 
-/* ===== Foto de perfil ===== */
 .perfil-photo-section {
   margin-bottom: 40px;
 }
@@ -92,7 +89,6 @@
   color: #333;
 }
 
-/* ===== Formulário ===== */
 .perfil-form {
   max-width: 700px;
 }
@@ -136,7 +132,6 @@
   border-color: #6a5acd;
 }
 
-/* ===== Botão ===== */
 .perfil-save-btn {
   background-color: #2f2f6f;
   color: #fff;
@@ -152,7 +147,7 @@
   background-color: #413c9a;
 }
 
-/* ==== RESPONSIVIDADE - PERFIL ==== */
+/* RESPONSIVIDADE - PERFIL */
 
 /* notebooks menores / tablets */
 @media (max-width: 1024px) {
@@ -164,7 +159,7 @@
 /* tablet em pé / celular */
 @media (max-width: 768px) {
   .perfil-wrapper {
-    flex-direction: column; /* sidebar em cima, conteúdo embaixo */
+    flex-direction: column;
   }
 
   .perfil-sidebar {
@@ -178,12 +173,10 @@
     padding: 20px 16px;
   }
 
-  /* evita que a foto e textos fiquem esmagados lado a lado */
   .perfil-photo-section {
     margin-bottom: 24px;
   }
 
-  /* se em algum momento você usar display flex aqui, já garante coluna */
   .perfil-photo-section,
   .perfil-photo-label {
     display: block;
@@ -205,7 +198,6 @@
   position: relative;
 }
 
-/* Ícone de voltar (seta) */
 .perfil-back-icon {
   position: absolute;
   top: 16px;

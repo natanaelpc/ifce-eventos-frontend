@@ -1,4 +1,3 @@
-/* Página geral */
 .request-event-page {
   display: flex;
   flex-direction: column;
@@ -9,7 +8,6 @@
   box-sizing: border-box;
 }
 
-/* título fora do card */
 .page-title {
   font-size: 2rem;
   color: #000000;
@@ -20,7 +18,6 @@
   text-align: left;
 }
 
-/* Estrutura do formulário */
 .event-form {
   display: flex;
   flex-direction: column;
@@ -33,7 +30,6 @@
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Linhas do formulário */
 .form-row {
   display: flex;
   gap: 20px;
@@ -44,7 +40,6 @@
   justify-content: center;
 }
 
-/* Campos do formulário */
 .form-group {
   flex: 1;
   display: flex;
@@ -83,7 +78,6 @@
   outline: none;
 }
 
-/* Categorias */
 .category-list {
   display: flex;
   flex-wrap: wrap;
@@ -112,7 +106,6 @@
   color: #fff;
 }
 
-/* Botão principal */
 .btn-primary {
   padding: 14px 40px;
   background-color: #07635D;
@@ -146,7 +139,7 @@
   }
   
   .request-event-page {
-    padding: 20px; /* reduz o padding lateral em telas pequenas */
+    padding: 20px;
   }
 }
 
@@ -157,17 +150,17 @@
   width: 100%;
 }
 
-/* ===== AJUSTE EXTRA PARA TELAS BEM ESTREITAS ===== */
+/* AJUSTE EXTRA PARA TELAS BEM ESTREITAS */
 @media (max-width: 480px) {
   .create-event-page {
-    padding: 12px 6px; /* menos padding lateral pra caber melhor */
+    padding: 12px 6px;
   }
 
   .event-form {
     padding: 18px 12px;
     margin: 0;
     width: 100%;
-    max-width: 100%;   /* garante que não passe da largura da tela */
+    max-width: 100%;
     box-sizing: border-box;
   }
 
@@ -175,7 +168,7 @@
   .event-form select,
   .event-form textarea {
     width: 100%;
-    box-sizing: border-box; /* evita somar borda/padding à largura */
+    box-sizing: border-box;
   }
 
   .btn-primary {

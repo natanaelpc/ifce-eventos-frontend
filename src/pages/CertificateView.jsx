@@ -3,14 +3,12 @@ import { useParams } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import "./CertificateView.css";
 
-// ✅ Hook do seu contexto
 import { useUser } from "../context/UserContext";
 
 const CertificateView = () => {
   const { id } = useParams();
   const { user } = useUser();
 
-  // ✅ Nome do usuário logado, ou fallback
   const userName = user?.name?.trim() ? user.name : "Usuário";
 
   return (

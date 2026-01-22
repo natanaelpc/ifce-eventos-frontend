@@ -1,6 +1,6 @@
 :root{
-  --sidebar-width: 310px;       /* espaçamento entre a sidebar e o conteúdo */
-  --sidebar-collapsed: 100px;   /* espaçamento entre a sidebar e o conteúdo quando fechada */
+  --sidebar-width: 310px;
+  --sidebar-collapsed: 100px;
   --header-height: 60px;
 }
 
@@ -23,7 +23,7 @@
   margin-left: var(--sidebar-width);
 }
 
-/* ===== RESPONSIVIDADE DO LAYOUT PRINCIPAL ===== */
+/* RESPONSIVIDADE DO LAYOUT PRINCIPAL */
 /* telas até 1024px (tablet / janela reduzida) */
 @media (max-width: 1024px) {
   .content {

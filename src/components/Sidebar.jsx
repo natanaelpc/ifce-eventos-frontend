@@ -47,13 +47,6 @@ export default function Sidebar({ isOpen }) {
                 <span>Criar Agendamentos</span>
               </Link>
             </li>
-            
-            <li>
-              <Link to="/register-professor">
-                <RegisterProfessorIcon width={20} height={20} />
-                <span>Cadastrar Professor</span>
-              </Link>
-            </li>
           </>
         )}
 
@@ -71,6 +64,17 @@ export default function Sidebar({ isOpen }) {
           </Link>
         </li>
       </ul>
+
+      {userType === "ADMIN" && (
+          <>
+            <li>
+              <Link to="/register-professor">
+                <RegisterProfessorIcon width={20} height={20} />
+                <span>Cadastrar Professor</span>
+              </Link>
+            </li>
+          </>
+        )}
 
       {/* Footer */}
       <div className="sidebar-footer">

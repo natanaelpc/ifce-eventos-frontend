@@ -3,16 +3,13 @@ import { FaCloudDownloadAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./Certificates.css";
 
-// ✅ Correção do caminho (dentro de src/)
 import CertificateIllustration from "../assets/illustrations/certificate-art.svg";
 
-// ✅ Hook do seu contexto
 import { useUser } from "../context/UserContext";
 
 const Certificates = () => {
   const { user } = useUser();
 
-  // ✅ Nome do usuário logado, ou fallback
   const userName = user?.name?.trim() ? user.name : "Usuário";
 
   const certificates = [

@@ -14,7 +14,6 @@
   color: #555;
 }
 
-/* Card */
 .help-card {
   background: #ffffff;
   padding: 20px;
@@ -29,7 +28,6 @@
   margin-bottom: 15px;
 }
 
-/* Form */
 .help-form {
   display: flex;
   flex-direction: column;
@@ -44,7 +42,6 @@
   color: #333;
 }
 
-/* >>> isso resolve a “fonte diferente” */
 .help-form input,
 .help-form select,
 .help-form textarea {
@@ -59,7 +56,6 @@
   background: #fff;
 }
 
-/* >>> isso impede o balão de estourar o layout */
 .help-form textarea {
   resize: none;
   max-width: 100%;

@@ -1,4 +1,4 @@
-/* Isolamento — garante que nada do Layout afete esta tela */
+/* isolamento — garante que nada do layout afete esta tela */
 .cert-view-page .cert-view-container {
   max-width: 900px;
   margin: 40px auto;
@@ -8,7 +8,7 @@
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* HEADER */
+/* header */
 .cert-view-page .cert-view-header {
   text-align: center;
   margin-bottom: 30px;
@@ -20,7 +20,7 @@
   margin-top: 6px;
 }
 
-/* BOTÕES */
+/* botões */
 .cert-view-page .cert-view-buttons {
   margin-top: 20px;
   display: flex;
@@ -46,7 +46,7 @@
   color: white;
 }
 
-/* CARD de pré-visualização */
+/* card de pré-visualização */
 .cert-view-page .cert-preview-box {
   background: white;
   padding: 25px;
@@ -54,7 +54,7 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Certificado interno */
+/* certificado interno */
 .cert-view-page .cert-paper {
   margin-top: 25px;
   padding: 40px;
@@ -76,7 +76,7 @@
   display: block;
 }
 
-/* ==== RESPONSIVIDADE - VISUALIZAÇÃO DO CERTIFICADO ==== */
+/* RESPONSIVIDADE - VISUALIZAÇÃO DO CERTIFICADO */
 
 /* notebooks / tablets */
 @media (max-width: 1024px) {

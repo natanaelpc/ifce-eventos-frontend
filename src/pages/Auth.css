@@ -1,7 +1,7 @@
-/* ===== Importando Roboto ===== */
+/* Importando Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-/* ===== Estrutura principal ===== */
+/* Estrutura principal */
 html, body {
   overflow-x: hidden;
 }
@@ -17,7 +17,7 @@ html, body {
   padding-left: 10%;
   font-family: 'Roboto', sans-serif;
 
-/* Círculos de fundo */
+/* círculos de fundo */
   background-image:
 
     /* círculo 1 — verde escuro */
@@ -32,7 +32,7 @@ html, body {
   background-repeat: no-repeat;
 }
 
-/* ===== Cores de Background ===== */
+/* cores de Background */
 
 .auth-container.login {
   background-color: #f4f6f8;
@@ -43,7 +43,7 @@ html, body {
 }
 
 
-/* ===== Card de login ===== */
+/* card de login */
 .auth-card {
   background: #fff;
   padding: 100px 50px;
@@ -55,7 +55,7 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* ===== Título ===== */
+/* título  */
 .auth-title {
   font-size: 28px;
   margin-bottom: 30px;
@@ -63,7 +63,7 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* ===== Formulário ===== */
+/* formulário */
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Cada campo (label + input) */
+/* campo (label + input) */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -101,7 +101,7 @@ html, body {
   outline: none;
 }
 
-/* ===== Botões ===== */
+/* botões */
 button {
   padding: 18px;
   border: none;
@@ -152,7 +152,7 @@ button:active {
 }
 
 
-/* ===== Link de cadastro ===== */
+/* link de cadastro */
 .auth-link {
   margin-top: 25px;
   font-size: 14px;
@@ -169,7 +169,7 @@ button:active {
   text-decoration: underline;
 }
 
-/* Rodapé */
+/* rodapé */
 .login-footer {
   position: absolute;
   bottom: 0;
@@ -214,7 +214,7 @@ button:active {
   pointer-events: none;
 }
 
-/* ===== RESPONSIVIDADE LOGIN / CADASTRO ===== */
+/* RESPONSIVIDADE LOGIN / CADASTRO */
 
 /* notebooks menores / tablets em landscape */
 @media (max-width: 1024px) {
@@ -283,7 +283,6 @@ button:active {
     font-size: 14px;
   }
 
-  /* se o logo do IFCE estiver posicionado absoluto, trazemos ele para o fluxo */
   .ifce-logo {
     position: static;
     margin: 0 auto 16px auto;
@@ -320,23 +319,23 @@ button:active {
   }
 }
 
-/* ===== AJUSTE EXTRA PARA LOGIN/CADASTRO EM TELAS MUITO ESTREITAS ===== */
+/* AJUSTE EXTRA PARA LOGIN/CADASTRO EM TELAS MUITO ESTREITAS */
 @media (max-width: 480px) {
   html,
   body {
-    overflow-x: hidden; /* garante que nada vaze para o lado */
+    overflow-x: hidden;
   }
 
   .auth-container {
-    padding: 16px 6px;  /* menos espaço lateral */
+    padding: 16px 6px;
     min-height: 100vh;
     box-sizing: border-box;
   }
 
   .auth-card {
     width: 100%;
-    max-width: 100%;    /* nunca passa da largura da tela */
-    padding: 20px 12px; /* reduz um pouco o padding interno */
+    max-width: 100%;
+    padding: 20px 12px;
     margin: 0;
     box-sizing: border-box;
   }
@@ -354,12 +353,10 @@ button:active {
     width: 100%;
   }
 
-  /* se o logo do IFCE estiver grande demais, dá só uma leve reduzida */
   .ifce-logo {
     max-width: 140px;
   }
 
-  /* se tiver essa imagem do IFCE EVENTS dentro do card */
   .auth-title-image {
     max-width: 180px;
     height: auto;

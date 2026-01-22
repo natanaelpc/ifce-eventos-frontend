@@ -29,12 +29,12 @@
   text-align: center;
 }
 
-/* Lista de certificados */
+/* lista de certificados */
 .cert-list {
   margin-top: 30px;
 }
 
-/* Card individual (certificado) */
+/* card individual (certificado) */
 .cert-item {
   background: rgba(245, 245, 245, 0.7);
   border: 1px solid rgba(210, 210, 210, 0.6);
@@ -52,7 +52,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Textos */
+/* textos */
 .cert-item-title {
   margin: 0;
   font-size: 15px;
@@ -66,7 +66,7 @@
   color: #444;
 }
 
-/* Tag de disponibilidade */
+/* tag de disponibilidade */
 .cert-available-tag {
   background: #d5ffe3;
   color: #2b7b3f;
@@ -85,7 +85,7 @@
   font-weight: bold;
 }
 
-/* Botão de download */
+/* botão de download */
 .cert-download-btn {
   background: #7b2ff7;
   color: white;
@@ -100,7 +100,7 @@
   background: #5c0fd3;
 }
 
-/* ===== RESPONSIVIDADE CERTIFICADOS ===== */
+/* RESPONSIVIDADE CERTIFICADOS*/
 
 /* telas até 1024px */
 @media (max-width: 1024px) {

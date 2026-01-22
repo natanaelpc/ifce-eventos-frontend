@@ -23,7 +23,7 @@ function Header({ toggleSidebar }) {
 
   return (
     <header className="header">
-      {/* Botão abrir/fechar sidebar */}
+      {/* botão abrir/fechar sidebar */}
       <button className="sidebar-toggle-icon" onClick={toggleSidebar}>
         <PanelIcon width={20} height={20} />
       </button>
