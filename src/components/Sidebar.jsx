@@ -5,6 +5,8 @@ import { ReactComponent as AvailableEventsIcon } from "../assets/icons/Available
 import { ReactComponent as CertificateIcon } from "../assets/icons/Certificate.svg";
 import { ReactComponent as FeedbackIcon } from "../assets/icons/Feedback.svg";
 import { ReactComponent as ApproveIcon } from "../assets/icons/Approve.svg";
+import { ReactComponent as SchedulingIcon } from "../assets/icons/Scheduling.svg";
+import { ReactComponent as RegisterProfessorIcon } from "../assets/icons/RegisterProfessor.svg";
 import "./Sidebar.css";
 import { useUser } from "../context/UserContext";
 
@@ -41,14 +43,14 @@ export default function Sidebar({ isOpen }) {
 
             <li>
               <Link to="/scheduling">
-                <ApproveIcon width={20} height={20} />
+                <SchedulingIcon width={20} height={20} />
                 <span>Criar Agendamentos</span>
               </Link>
             </li>
             
             <li>
               <Link to="/register-professor">
-                <ApproveIcon width={20} height={20} />
+                <RegisterProfessorIcon width={20} height={20} />
                 <span>Cadastrar Professor</span>
               </Link>
             </li>
