@@ -1,12 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./Auth.css";
 import LogoIf from '../assets/logoif.png';
-import { FaArrowLeft, FaPaintBrush } from "react-icons/fa";
-import { useUser } from "../context/UserContext";
+import { FaArrowLeft } from "react-icons/fa";
 import api from "../services/APIService";
 import { useState } from 'react';
 
-function Register() {
+function RegisterProfessor() {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -111,19 +110,15 @@ function Register() {
                         </div>
 
                         <button type="submit" className="btn-primary-auth">
-                            Criar Conta
+                            Criar Professor
                         </button>
                     </form>
 
                 </div>
-
-                <footer className="login-footer">
-                    <p>Já tem uma conta? <Link to="/login">Entre agora</Link></p>
-                </footer>
 
             </div>
         </div>
     );
 }
 
-export default Register;
+export default RegisterProfessor;
