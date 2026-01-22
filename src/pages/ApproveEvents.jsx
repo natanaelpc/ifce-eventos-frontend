@@ -20,7 +20,7 @@ function ApproveEvents() {
 
   const approveEvent = async (id) => {
     try {
-      await api.patch(`/api/evento/${id}/aprovar`);
+      await api.put(`/api/evento/${id}/aprovar`);
       fetchEvents();
     } catch (err) {
       console.error("Erro ao aprovar evento:", err);
@@ -29,7 +29,7 @@ function ApproveEvents() {
 
   const rejectEvent = async (id) => {
     try {
-      await api.patch(`/api/evento/${id}/recusar`);
+      await api.put(`/api/evento/${id}/recusar`);
       fetchEvents();
     } catch (err) {
       console.error("Erro ao rejeitar evento:", err);

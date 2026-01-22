@@ -37,6 +37,12 @@ function RegisterProfessor() {
 
             alert('Professor cadastrado com sucesso!')
 
+            setNome("");
+            setEmail("");
+            setSenha("");
+            setConfirmPassword("");
+            setErro("");
+
         } catch (err) {
             if (err.response) {
                 setErro("E-mail, senha ou nome inválidos.");

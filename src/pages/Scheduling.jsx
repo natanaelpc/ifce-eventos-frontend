@@ -5,15 +5,18 @@ import "./Scheduling.css";
 function Scheduling() {
   const [showForm, setShowForm] = useState(false);
   const [events, setEvents] = useState([]);
+  const [lugares, setLugares] = useState([]);
+  const [salvando, setSalvando] = useState(false);
 
   const [formData, setFormData] = useState({
-    eventId: "",
-    local: "",
-    date: "",
-    startTime: "",
-    endTime: ""
+    eventoId: "",
+    lugarId: "",
+    data: "",
+    horaInicio: "",
+    horaFim: "",
   });
 
+  // puxa os eventos aprovados
   const fetchEvents = async () => {
     try {
       const res = await api.get("/api/evento/aprovados");
@@ -23,63 +26,87 @@ function Scheduling() {
     }
   };
 
+  // puxar todos os lugares cadastrados do sistema
+  const fetchLugares = async () => {
+    try {
+      const res = await api.get("/api/lugar/listar");
+      setLugares(res.data);
+    } catch (err) {
+      console.error("Erro ao carregar lugares:", err);
+    }
+  };
+
   useEffect(() => {
     fetchEvents();
+    fetchLugares();
   }, []);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
+  };
+
+  const handleEventoChange = (e) => {
+    const eventoId = e.target.value;
+
+    const eventoSelecionado = events.find((event) => event.id === eventoId);
+
+    setFormData((prev) => ({
+      ...prev,
+      eventoId,
+      data: eventoSelecionado?.dataPrevista || "",
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const selectedEvent = events.find(
-      (event) => event.id === formData.eventId
-    );
-
-    if (!selectedEvent) {
-      alert("Evento inválido");
+    if (!formData.eventoId) {
+      alert("Selecione um evento!");
       return;
     }
 
-    const newScheduling = {
-      eventId: selectedEvent.id,
-      title: selectedEvent.title,
-      modality: selectedEvent.modality,
-      date: formData.date,
-      startTime: formData.startTime,
-      endTime: formData.endTime,
-      local: formData.local
+    if (!formData.lugarId) {
+      alert("Selecione um lugar!");
+      return;
+    }
+
+    // novo agendamento a ser criado
+    const novoAgendamento = {
+      eventoId: formData.eventoId,
+      lugarId: formData.lugarId,
+      data: formData.data,
+      horaInicio: formData.horaInicio,
+      horaFim: formData.horaFim,
     };
 
     try {
-      // cria agendamento
-      await api.post("/api/agendamento", newScheduling);
+      setSalvando(true);
 
-      // atualiza status do evento
-      await api.patch(`/eventos/${selectedEvent.id}`, {
-        status: "AGENDADO"
-      });
-
-      // remove da lista local
-      setEvents(events.filter(e => e.id !== selectedEvent.id));
+      await api.post("/api/agendamento", novoAgendamento);
 
       alert("Agendamento criado com sucesso!");
+
       setShowForm(false);
       setFormData({
-        eventId: "",
-        local: "",
-        date: "",
-        startTime: "",
-        endTime: ""
+        eventoId: "",
+        lugarId: "",
+        data: "",
+        horaInicio: "",
+        horaFim: "",
       });
+
+      // remove evento já agendado da lista
+      // setEvents((prev) =>
+      //   prev.filter((event) => event.id !== formData.eventoId),
+      // );
     } catch (err) {
       console.error("Erro ao criar agendamento:", err);
       alert("Erro ao criar agendamento");
+    } finally {
+      setSalvando(false);
     }
   };
 
@@ -98,15 +125,16 @@ function Scheduling() {
           <div className="form-group">
             <label>Evento</label>
             <select
-              name="eventId"
-              value={formData.eventId}
-              onChange={handleChange}
+              name="eventoId"
+              value={formData.eventoId}
+              onChange={handleEventoChange}
               required
             >
               <option value="">Selecione um evento</option>
-              {events.map(event => (
+
+              {events.map((event) => (
                 <option key={event.id} value={event.id}>
-                  {event.title}
+                  {event.titulo}
                 </option>
               ))}
             </select>
@@ -115,14 +143,18 @@ function Scheduling() {
           <div className="form-group">
             <label>Local</label>
             <select
-              name="local"
-              value={formData.local}
+              name="lugarId"
+              value={formData.lugarId}
               onChange={handleChange}
               required
             >
               <option value="">Selecione o local</option>
-              <option value="Auditório">Auditório</option>
-              <option value="Laboratório">Laboratório</option>
+
+              {lugares.map((lugar) => (
+                <option key={lugar.id} value={lugar.id}>
+                  {lugar.nome}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -131,8 +163,8 @@ function Scheduling() {
               <label>Data</label>
               <input
                 type="date"
-                name="date"
-                value={formData.date}
+                name="data"
+                value={formData.data}
                 onChange={handleChange}
                 required
               />
@@ -142,8 +174,8 @@ function Scheduling() {
               <label>Hora início</label>
               <input
                 type="time"
-                name="startTime"
-                value={formData.startTime}
+                name="horaInicio"
+                value={formData.horaInicio}
                 onChange={handleChange}
                 required
               />
@@ -153,8 +185,8 @@ function Scheduling() {
               <label>Hora fim</label>
               <input
                 type="time"
-                name="endTime"
-                value={formData.endTime}
+                name="horaFim"
+                value={formData.horaFim}
                 onChange={handleChange}
                 required
               />
@@ -162,8 +194,8 @@ function Scheduling() {
           </div>
 
           <div className="form-actions">
-            <button type="submit" className="btn-primary">
-              Criar
+            <button type="submit" className="btn-primary" disabled={salvando}>
+              {salvando ? "Criando..." : "Criar"}
             </button>
           </div>
         </form>
